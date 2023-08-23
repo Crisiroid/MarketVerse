@@ -6,19 +6,12 @@ using System.Web.Mvc;
 
 namespace MarketVerse.Controllers
 {
-    public class HomeController : Controller
+    public class ProductController : Controller
     {
+        // GET: Product
         public ActionResult Index()
         {
             return View();
         }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "About Developer";
-
-            return View();
-        }
-       
     }
 }
