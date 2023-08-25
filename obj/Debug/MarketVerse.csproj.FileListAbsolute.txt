@@ -77,3 +77,9 @@ C:\Users\Administrator\source\repos\MarketVerse\MarketVerse\obj\Debug\MarketVers
 C:\Users\Administrator\source\repos\MarketVerse\MarketVerse\obj\Debug\MarketVerse.csproj.CopyComplete
 C:\Users\Administrator\source\repos\MarketVerse\MarketVerse\obj\Debug\MarketVerse.dll
 C:\Users\Administrator\source\repos\MarketVerse\MarketVerse\obj\Debug\MarketVerse.pdb
+C:\Users\Administrator\source\repos\MarketVerse\MarketVerse\bin\EntityFramework.dll
+C:\Users\Administrator\source\repos\MarketVerse\MarketVerse\bin\EntityFramework.SqlServer.dll
+C:\Users\Administrator\source\repos\MarketVerse\MarketVerse\bin\EntityFramework.xml
+C:\Users\Administrator\source\repos\MarketVerse\MarketVerse\bin\EntityFramework.SqlServer.xml
+C:\Users\Administrator\source\repos\MarketVerse\MarketVerse\obj\Debug\MarketVerse.Migrations.InitialCreate.resources
+C:\Users\Administrator\source\repos\MarketVerse\MarketVerse\obj\Debug\MarketVerse.csproj.GenerateResource.cache
