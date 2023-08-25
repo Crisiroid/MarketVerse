@@ -10,6 +10,7 @@ namespace MarketVerse.Controllers
     {
         public ActionResult Index()
         {
+            if (Session["User"] != "Admin") return RedirectToAction("Index", "Home");
             return View();
         }
     }
