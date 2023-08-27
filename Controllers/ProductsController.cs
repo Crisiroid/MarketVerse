@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -43,19 +44,18 @@ namespace MarketVerse.Controllers
             ViewBag.SubCategoryID = new SelectList(db.SubCategories, "id", "Name");
             return View();
         }
-
-        // POST: Products/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,name,Description,Price,Quantity,SubCategory_id,Views")] Product product)
+        public ActionResult Create(Product product)
         {
-            if (ModelState.IsValid)
+            try
             {
                 db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
+            }catch(Exception e)
+            {
+                ViewBag.Error = e.Message + product.SubCategory_id;
             }
 
             ViewBag.SubCategoryID = new SelectList(db.SubCategories, "id", "Name", product.SubCategory_id);

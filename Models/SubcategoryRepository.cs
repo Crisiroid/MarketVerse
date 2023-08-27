@@ -16,20 +16,5 @@ namespace MarketVerse.Models
             return db.SubCategories.ToList();
         }
 
-
-        public static List<SelectListItem> ShowAllSubCategoriesSelectListItem()
-        {
-            var items = ShowAllSubCategories();
-            List<SelectListItem> item = items.ConvertAll(a =>
-            {
-                return new SelectListItem()
-                {
-                    Text = a.ToString(),
-                    Value = a.ToString(),
-                    Selected = false
-                };
-            });
-            return item;
-        }
     }
 }

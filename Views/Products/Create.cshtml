@@ -7,6 +7,11 @@
 
 <h2>Create</h2>
 
+@if(ViewBag.Error != null)
+            {
+                <p>@ViewBag.Error</p>
+            }
+
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
@@ -48,7 +53,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.SubCategory_id, "SubCategoryID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.SubCategory_id, "SubCategory_id", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("SubCategoryID", s , htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.SubCategory_id, "", new { @class = "text-danger" })
