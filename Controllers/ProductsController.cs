@@ -18,7 +18,8 @@ namespace MarketVerse.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            return View(db.Products.ToList());
+            var products = db.Products.Include(p => p.SubCategory);
+            return View(products.ToList());
         }
 
         // GET: Products/Details/5
@@ -39,6 +40,7 @@ namespace MarketVerse.Controllers
         // GET: Products/Create
         public ActionResult Create()
         {
+            ViewBag.SubCategoryID = new SelectList(db.SubCategories, "id", "Name");
             return View();
         }
 
@@ -47,7 +49,7 @@ namespace MarketVerse.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,name,Description,Price,Quantity")] Product product)
+        public ActionResult Create([Bind(Include = "id,name,Description,Price,Quantity,SubCategoryID,Views")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -56,6 +58,7 @@ namespace MarketVerse.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.SubCategoryID = new SelectList(db.SubCategories, "id", "Name", product.SubCategoryID);
             return View(product);
         }
 
@@ -71,6 +74,7 @@ namespace MarketVerse.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.SubCategoryID = new SelectList(db.SubCategories, "id", "Name", product.SubCategoryID);
             return View(product);
         }
 
@@ -79,7 +83,7 @@ namespace MarketVerse.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,name,Description,Price,Quantity")] Product product)
+        public ActionResult Edit([Bind(Include = "id,name,Description,Price,Quantity,SubCategoryID,Views")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -87,6 +91,7 @@ namespace MarketVerse.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.SubCategoryID = new SelectList(db.SubCategories, "id", "Name", product.SubCategoryID);
             return View(product);
         }
 
