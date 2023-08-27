@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Create";
+    SelectList s = ViewBag.SubCategoryID;
 }
 
 <h2>Create</h2>
@@ -47,10 +48,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.SubCategoryID, "SubCategoryID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.SubCategory_id, "SubCategoryID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("SubCategoryID", MarketVerse.Models.SubcategoryRepository.ShowAllSubCategories(), htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.SubCategoryID, "", new { @class = "text-danger" })
+                @Html.DropDownList("SubCategoryID", s , htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.SubCategory_id, "", new { @class = "text-danger" })
             </div>
         </div>
 

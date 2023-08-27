@@ -16,7 +16,7 @@ namespace MarketVerse.Models
         [Required] public decimal Quantity { get; set; }
 
         [Required] public SubCategory SubCategory { get; set; }
-        [Required] public int SubCategoryID { get; set; }
+        [Required] public int SubCategory_id { get; set; }
         [Required] public int Views { get; set; } = 0;
 
     }
