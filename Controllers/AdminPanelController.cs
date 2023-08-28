@@ -27,6 +27,7 @@ namespace MarketVerse.Controllers
             }
             return View();
         }
+        [HttpPost]
         //A function to check the Login Form
         public ActionResult AdminLogin(Admin admin)
         {
