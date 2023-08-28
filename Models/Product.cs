@@ -18,6 +18,5 @@ namespace MarketVerse.Models
         [Required] public int SubCategoryid { get; set; }
         [Required] public int Purchuses { get; set; }
         [Required] public int Views { get; set; } = 0;
-
     }
 }
