@@ -13,22 +13,22 @@ namespace MarketVerse.Controllers
 {
     public class SubCategoriesController : Controller
     {
-        private MarketVerseContext db = new MarketVerseContext();
-
-        // GET: SubCategories
         public ActionResult Index()
         {
-            return View(db.SubCategories.ToList());
+            if (Session["Admin"] == null) return HttpNotFound();
+            return View(SubCategory.ShowAllSubCategories());
         }
 
-        // GET: SubCategories/Details/5
         public ActionResult Details(int? id)
         {
+            if (Session["Admin"] == null) return HttpNotFound();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SubCategory subCategory = db.SubCategories.Find(id);
+            SubCategory subCategory = SubCategory.FindSubCategory((int)id);
+
+
             if (subCategory == null)
             {
                 return HttpNotFound();
@@ -36,37 +36,37 @@ namespace MarketVerse.Controllers
             return View(subCategory);
         }
 
-        // GET: SubCategories/Create
         public ActionResult Create()
         {
+            if (Session["Admin"] == null) return HttpNotFound();
             return View();
         }
 
-        // POST: SubCategories/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,Name,ItemCount,Code")] SubCategory subCategory)
+        public ActionResult Create(SubCategory subCategory)
         {
-            if (ModelState.IsValid)
+
+            if (SubCategory.Create(subCategory))
             {
-                db.SubCategories.Add(subCategory);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "SubCategories");
+            }
+            else
+            {
+                TempData["pm"] = "Something went wrong";
+                return RedirectToAction("Create", "SubCategories");
             }
 
-            return View(subCategory);
         }
-
-        // GET: SubCategories/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (Session["Admin"] == null) return HttpNotFound();
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SubCategory subCategory = db.SubCategories.Find(id);
+            SubCategory subCategory = SubCategory.FindSubCategory((int)id);
             if (subCategory == null)
             {
                 return HttpNotFound();
@@ -74,30 +74,30 @@ namespace MarketVerse.Controllers
             return View(subCategory);
         }
 
-        // POST: SubCategories/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,Name,ItemCount,Code")] SubCategory subCategory)
         {
-            if (ModelState.IsValid)
+            if (SubCategory.Edit(subCategory))
             {
-                db.Entry(subCategory).State = EntityState.Modified;
-                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(subCategory);
+            else
+            {
+                TempData["pm"] = "Something went wrong";
+                return RedirectToAction("Index", "SubCategories");
+            }
         }
 
-        // GET: SubCategories/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (Session["Admin"] == null) return HttpNotFound();
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SubCategory subCategory = db.SubCategories.Find(id);
+            SubCategory subCategory = SubCategory.FindSubCategory((int)id);
             if (subCategory == null)
             {
                 return HttpNotFound();
@@ -105,22 +105,26 @@ namespace MarketVerse.Controllers
             return View(subCategory);
         }
 
-        // POST: SubCategories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            SubCategory subCategory = db.SubCategories.Find(id);
-            db.SubCategories.Remove(subCategory);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (SubCategory.Delete(id))
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                TempData["pm"] = "Something went wrong";
+                return RedirectToAction("Delete", "Subcategory");
+            }
         }
 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                db.Dispose();
+                DatabaseModel.db.Dispose();
             }
             base.Dispose(disposing);
         }
