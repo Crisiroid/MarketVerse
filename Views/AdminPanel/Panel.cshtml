@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Admin's control panel";
+}
+
+<h2>Admin's panel</h2>
+
+
+@if (ViewBag.pm != null)
+{
+    <div class="alert alert-danger">@ViewBag.pm</div>
+}
+
+<ul>
+    <li><a href="/AdminPanel/Users">Manage Users</a></li>
+    <li><a href="/AdminPanel/Products"> Manage Products</a></li>
+    <li><a href="/AdminPanel/Orders"> Manage Orders</a></li>
+    <li><a href="/AdminPanel/Statics"> Manage Statics</a></li>
+    <li><a href="/AdminPanel/SiteSettings"> Site Settings</a></li>
+    <li><a href="/AdminPanel/ViewSite">View Site</a></li>
+    <li><a href="/AdminPanel/Logout">Logout</a></li>
+</ul>

@@ -9,11 +9,9 @@ namespace MarketVerse.Models
 {
     public class SubcategoryRepository
     {
-        public static MarketVerseContext db = new MarketVerseContext();
-
         public static List<SubCategory> ShowAllSubCategories()
         {
-            return db.SubCategories.ToList();
+            return DatabaseModel.db.SubCategories.ToList();
         }
 
     }

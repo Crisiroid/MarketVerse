@@ -81,5 +81,5 @@ C:\Users\Administrator\source\repos\MarketVerse\MarketVerse\bin\EntityFramework.
 C:\Users\Administrator\source\repos\MarketVerse\MarketVerse\bin\EntityFramework.SqlServer.dll
 C:\Users\Administrator\source\repos\MarketVerse\MarketVerse\bin\EntityFramework.xml
 C:\Users\Administrator\source\repos\MarketVerse\MarketVerse\bin\EntityFramework.SqlServer.xml
-C:\Users\Administrator\source\repos\MarketVerse\MarketVerse\obj\Debug\MarketVerse.Migrations.createDatabase.resources
+C:\Users\Administrator\source\repos\MarketVerse\MarketVerse\obj\Debug\MarketVerse.Migrations.UpdateAdminTable.resources
 C:\Users\Administrator\source\repos\MarketVerse\MarketVerse\obj\Debug\MarketVerse.csproj.GenerateResource.cache

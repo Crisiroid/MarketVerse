@@ -9,7 +9,13 @@ namespace MarketVerse.Models
     public class Admin
     {
         [Key] public int Id { get; set; }
-        [Required]public int Username { get; set; }
-        [Required]public int Password { get; set; }
+        [Required]public string Username { get; set; }
+        [Required]public string Password { get; set; }
+
+
+        public static bool isAvailable(string Username, string Password)
+        {
+            return DatabaseModel.db.Admin.Any(x => x.Username == Username && x.Password == Password);
+        }
     }
 }
