@@ -130,16 +130,15 @@
     <Compile Include="Controllers\AdminPanelController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
-    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\SubCategoriesController.cs" />
     <Compile Include="Controllers\UserPanelController.cs" />
     <Compile Include="Data\MarketVerseContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202308271047328_productUpdate.cs" />
-    <Compile Include="Migrations\202308271047328_productUpdate.designer.cs">
-      <DependentUpon>202308271047328_productUpdate.cs</DependentUpon>
+    <Compile Include="Migrations\202308280433003_createDatabase.cs" />
+    <Compile Include="Migrations\202308280433003_createDatabase.designer.cs">
+      <DependentUpon>202308280433003_createDatabase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -210,11 +209,6 @@
     <Content Include="Views\SubCategories\Delete.cshtml" />
     <Content Include="Views\SubCategories\Edit.cshtml" />
     <Content Include="Views\SubCategories\Index.cshtml" />
-    <Content Include="Views\Products\Create.cshtml" />
-    <Content Include="Views\Products\Delete.cshtml" />
-    <Content Include="Views\Products\Details.cshtml" />
-    <Content Include="Views\Products\Edit.cshtml" />
-    <Content Include="Views\Products\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -248,8 +242,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202308271047328_productUpdate.resx">
-      <DependentUpon>202308271047328_productUpdate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202308280433003_createDatabase.resx">
+      <DependentUpon>202308280433003_createDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

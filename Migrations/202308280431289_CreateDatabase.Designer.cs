@@ -7,13 +7,13 @@ namespace MarketVerse.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class productUpdate : IMigrationMetadata
+    public sealed partial class CreateDatabase : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(productUpdate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CreateDatabase));
         
         string IMigrationMetadata.Id
         {
-            get { return "202308271047328_productUpdate"; }
+            get { return "202308280431289_CreateDatabase"; }
         }
         
         string IMigrationMetadata.Source
