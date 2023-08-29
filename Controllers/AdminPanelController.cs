@@ -12,6 +12,8 @@ namespace MarketVerse.Controllers
         //A Page that includes a form for Admin's login
         public ActionResult Index()
         {
+            if (Session["Admin"].ToString() == "on") return RedirectToAction("Panel", "AdminPanel");
+
             if (TempData["pm"] != null)
             {
                 ViewBag.pm = TempData["pm"].ToString();
@@ -31,7 +33,7 @@ namespace MarketVerse.Controllers
         //A function to check the Login Form
         public ActionResult AdminLogin(Admin admin)
         {
-            if(Admin.isAvailable(admin.Username, admin.Password))
+            if (Admin.isAvailable(admin.Username, admin.Password))
             {
                 Session["Admin"] = "on";
                 TempData["Username"] = admin.Username;

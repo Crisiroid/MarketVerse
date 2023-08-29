@@ -9,8 +9,12 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table table-striped table-bordered">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.id)
+
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -22,6 +26,9 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.id)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
@@ -37,3 +44,5 @@
 }
 
 </table>
+
+<a class="btn btn-info" href="/Adminpanel/Panel">Back to Admin's panel</a>
