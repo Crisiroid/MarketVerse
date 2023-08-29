@@ -36,11 +36,12 @@
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                                     @foreach (var subitem in subcategories)
                                     {
-                                        while (subitem.Code == item.id)
+                                        if (subitem.Code == item.id)
                                         {
-                                            <a class="dropdown-item" href="#">@item.Name</a>
-
+                                            <a class="dropdown-item" href="#">@subitem.Name</a>
+                                            <div class="dropdown-divider"></div>
                                         }
+
                                     }
                                 </div>
                             </div>
