@@ -119,14 +119,5 @@ namespace MarketVerse.Controllers
                 return RedirectToAction("Delete", "Subcategory");
             }
         }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                DatabaseModel.db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }
