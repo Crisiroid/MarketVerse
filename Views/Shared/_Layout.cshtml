@@ -1,7 +1,19 @@
 ﻿@{
+    bool AdminLoggedin = false;
+
     List<MarketVerse.Models.Category> categories = MarketVerse.Models.Category.ShowAllCategories();
     List<MarketVerse.Models.SubCategory> subcategories = MarketVerse.Models.SubCategory.ShowAllSubCategories();
- }
+    if (Session["Admin"] != null)
+    {
+        AdminLoggedin = true;
+
+    }
+    else
+    {
+        AdminLoggedin = false;
+    }
+
+    }
 
 
 <!DOCTYPE html>
@@ -26,6 +38,14 @@
                 <ul class="navbar-nav flex-grow-1">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    @if (AdminLoggedin)
+                    {
+                        <li>
+                        <li>@Html.ActionLink("Admin Panel", "Panel", "AdminPanel", new { area = "" }, new { @class = "nav-link" })</li>
+
+                        </li>
+                    }
+
                     @foreach (var item in categories)
                     {
                         <li>
@@ -38,7 +58,7 @@
                                     {
                                         if (subitem.Code == item.id)
                                         {
-                                            <a class="dropdown-item" href="#">@subitem.Name</a>
+                                            <a class="dropdown-item" href="/Products/ViewProductsBasedOnSubCategory/@item.id">@subitem.Name</a>
                                             <div class="dropdown-divider"></div>
                                         }
 
@@ -46,8 +66,6 @@
                                 </div>
                             </div>
                         </li>
-                        //<li>@Html.ActionLink(item.Name, "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-
                     }
                 </ul>
             </div>

@@ -1,0 +1,22 @@
+﻿@model IEnumerable<MarketVerse.Models.Product>
+@{
+    ViewBag.Title = "Product List";
+}
+
+<main style="margin: 20px;">
+
+    @foreach (var item in Model)
+    {
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">@item.Name</h5>
+                <h6 class="card-subtitle mb-2 text-muted">@item.Description</h6>
+                <p class="card-text">Price: @item.Price</p>
+                <a href="#" class="card-link">View Details</a>
+            </div>
+        </div>
+    }
+</main>
+<h2>Product List</h2>
+
+

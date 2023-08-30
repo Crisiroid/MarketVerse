@@ -25,6 +25,10 @@ namespace MarketVerse.Models
             return DatabaseModel.db.Products.ToList();
         }
 
+        public static List<Product> ShowAllProductsSortByCatergory(int id)
+        {
+            return DatabaseModel.db.Products.Where(x => x.SubCategoryid == id).ToList();
+        }
         public static Product FindProduct(int id)
         {
             return DatabaseModel.db.Products.FirstOrDefault(x => x.id == id);

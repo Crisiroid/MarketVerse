@@ -1,78 +1,82 @@
 ﻿@model MarketVerse.Models.Product
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Product Details";
 }
 @if (ViewBag.pm != null)
 {
     <div class="alert-dismissible alert-info">@ViewBag.pm</div>
 }
 
-<h2>Details</h2>
+<main style="margin: 20px;">
+    <h2>Details</h2>
 
-<div>
-    <h4>Product</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+    <div>
+        <h4>Product Details</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Quantity)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Quantity)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Quantity)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SubCategoryid)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.SubCategoryid)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.SubCategoryid)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.SubCategoryid)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Purchuses)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Purchuses)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Purchuses)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Purchuses)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Views)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Views)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Views)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Views)
+            </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+
+</main>
+
