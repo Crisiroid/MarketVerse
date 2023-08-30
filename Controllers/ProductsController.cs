@@ -144,9 +144,9 @@ namespace MarketVerse.Controllers
             return RedirectToAction("Index", "Products");
 
         }
-        public ActionResult ViewProductsBasedOnSubCategory(int subcategoryId)
+        public ActionResult ViewProductsBasedOnSubCategory(int id)
         {
-            return View(Product.ShowAllProductsSortByCatergory(subcategoryId));
+            return View(Product.ShowAllProductsSortByCatergory(id));
         }
     }
 }

@@ -21,7 +21,7 @@ namespace MarketVerse
 
             routes.MapRoute(
                 name: "ViewProductsBasedOnSubCategory",
-                url: "ViewProductsBasedOnSubCategory/{subcategoryId}",
+                url: "ViewProductsBasedOnSubCategory/{id}",
                 defaults: new {controller = "Products", action = "ViewProductsBasedOnSubCategory" }
             );
         }
