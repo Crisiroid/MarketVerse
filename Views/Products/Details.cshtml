@@ -3,6 +3,10 @@
 @{
     ViewBag.Title = "Details";
 }
+@if (ViewBag.pm != null)
+{
+    <div class="alert-dismissible alert-info">@ViewBag.pm</div>
+}
 
 <h2>Details</h2>
 

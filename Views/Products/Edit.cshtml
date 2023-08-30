@@ -3,13 +3,16 @@
 @{
     ViewBag.Title = "Edit";
 }
-
+@if (ViewBag.pm != null)
+{
+    <div class="alert-dismissible alert-info">@ViewBag.pm</div>
+}
 <h2>Edit</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Product</h4>
         <hr />

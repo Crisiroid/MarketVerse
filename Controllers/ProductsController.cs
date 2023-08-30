@@ -21,6 +21,12 @@ namespace MarketVerse.Controllers
         {
             if (Session["Admin"] == null) return HttpNotFound();
 
+            if (TempData["pm"] != null)
+            {
+                ViewBag.pm = TempData["pm"].ToString();
+                TempData.Clear();
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -36,6 +42,13 @@ namespace MarketVerse.Controllers
         public ActionResult Create()
         {
             if (Session["Admin"] == null) return HttpNotFound();
+
+            if (TempData["pm"] != null)
+            {
+                ViewBag.pm = TempData["pm"].ToString();
+                TempData.Clear();
+            }
+
             return View();
         }
 
@@ -58,6 +71,13 @@ namespace MarketVerse.Controllers
         public ActionResult Edit(int? id)
         {
             if (Session["Admin"] == null) return HttpNotFound();
+
+            if (TempData["pm"] != null)
+            {
+                ViewBag.pm = TempData["pm"].ToString();
+                TempData.Clear();
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -90,6 +110,12 @@ namespace MarketVerse.Controllers
         public ActionResult Delete(int? id)
         {
             if (Session["Admin"] == null) return HttpNotFound();
+
+            if (TempData["pm"] != null)
+            {
+                ViewBag.pm = TempData["pm"].ToString();
+                TempData.Clear();
+            }
 
             if (id == null)
             {

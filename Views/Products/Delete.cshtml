@@ -3,6 +3,10 @@
 @{
     ViewBag.Title = "Delete";
 }
+@if (ViewBag.pm != null)
+{
+    <div class="alert-dismissible alert-info">@ViewBag.pm</div>
+}
 
 <h2>Delete</h2>
 
@@ -69,7 +73,8 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
