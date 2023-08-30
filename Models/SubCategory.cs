@@ -68,5 +68,12 @@ namespace MarketVerse.Models
             }
             
         }
+
+        public static void IncreaseProductNumbers(int id)
+        {
+            SubCategory sb = DatabaseModel.db.SubCategories.FirstOrDefault(x => x.id == id);
+            sb.ItemCount++;
+            DatabaseModel.db.SaveChanges();
+        }
     }
 }
