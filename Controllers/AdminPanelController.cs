@@ -12,7 +12,6 @@ namespace MarketVerse.Controllers
         //A Page that includes a form for Admin's login
         public ActionResult Index()
         {
-            if (Session["Admin"].ToString() == "on") return RedirectToAction("Panel", "AdminPanel");
 
             if (TempData["pm"] != null)
             {
