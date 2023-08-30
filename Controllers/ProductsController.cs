@@ -8,6 +8,7 @@ namespace MarketVerse.Controllers
     {
         public ActionResult Index()
         {
+            if (Session["Admin"] == null) return HttpNotFound();
             if (TempData["pm"]!= null)
             {
                 ViewBag.pm = TempData["pm"].ToString();
@@ -18,6 +19,8 @@ namespace MarketVerse.Controllers
 
         public ActionResult Details(int? id)
         {
+            if (Session["Admin"] == null) return HttpNotFound();
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -32,6 +35,7 @@ namespace MarketVerse.Controllers
 
         public ActionResult Create()
         {
+            if (Session["Admin"] == null) return HttpNotFound();
             return View();
         }
 
@@ -53,6 +57,7 @@ namespace MarketVerse.Controllers
 
         public ActionResult Edit(int? id)
         {
+            if (Session["Admin"] == null) return HttpNotFound();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -69,6 +74,7 @@ namespace MarketVerse.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Product product)
         {
+
             if (Product.Edit(product))
             {
                 TempData["pm"] = "Product Updated Successfully!";
@@ -83,6 +89,8 @@ namespace MarketVerse.Controllers
 
         public ActionResult Delete(int? id)
         {
+            if (Session["Admin"] == null) return HttpNotFound();
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
