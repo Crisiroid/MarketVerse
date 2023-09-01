@@ -148,5 +148,10 @@ namespace MarketVerse.Controllers
         {
             return View(Product.ShowAllProductsSortByCatergory(id));
         }
+
+        public ActionResult ShowProduct(int id)
+        {
+            return View(Product.FindProduct(id));
+        }
     }
 }

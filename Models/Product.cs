@@ -34,6 +34,13 @@ namespace MarketVerse.Models
             return DatabaseModel.db.Products.FirstOrDefault(x => x.id == id);
         }
 
+        public static void IncreaseProductView(int id)
+        {
+            Product md = DatabaseModel.db.Products.FirstOrDefault(x => x.id == id);
+            md.Views++;
+            DatabaseModel.db.SaveChanges();
+        }
+
         public static bool Create(Product product)
         {
             try
