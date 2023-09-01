@@ -12,5 +12,10 @@ namespace MarketVerse.Models
         [Required] public int ProductId { get; set; }
         [Required] public string Title { get; set; }
         [Required] public string Text { get; set; }
+
+        public static Content FindContentByProductId(int ProductId)
+        {
+            return DatabaseModel.db.Contents.FirstOrDefault(x => x.ProductId == ProductId);
+        }
     }
 }

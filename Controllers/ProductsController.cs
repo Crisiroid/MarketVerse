@@ -151,7 +151,7 @@ namespace MarketVerse.Controllers
 
         public ActionResult ShowProduct(int id)
         {
-            return View(Product.FindProduct(id));
+            return View(Product.ShowProduct(id));
         }
     }
 }

@@ -41,6 +41,21 @@ namespace MarketVerse.Models
             DatabaseModel.db.SaveChanges();
         }
 
+        public static ProductWithContent ShowProduct(int id)
+        {
+            Product product = FindProduct(id);
+            Content content = Content.FindContentByProductId(id);
+
+            IncreaseProductView(id);
+
+            return new ProductWithContent
+            {
+                product = product,
+                content = content
+            };
+
+        }
+
         public static bool Create(Product product)
         {
             try
