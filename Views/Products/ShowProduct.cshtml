@@ -3,15 +3,16 @@
     ViewBag.Title = "ShowProduct";
 }
 
-<main>
+<main style="margin: 20px;">
     <div class="card">
         <div class="card-header">
             Product Information
         </div>
         <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text"></p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <h5 class="card-title">@Model.product.Name</h5>
+            <p class="card-text">@Model.product.Description</p>
+            <p class="card-text">@Model.product.Purchuses people have bought this product so far!</p>
+            <a href="#" class="btn btn-success">Buy Now!</a>
         </div>
     </div>
 
