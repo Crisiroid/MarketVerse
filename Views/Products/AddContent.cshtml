@@ -3,5 +3,14 @@
     ViewBag.Title = "AddContent";
 }
 
-<h2>AddContent</h2>
+<main style="margin: 20px;">
+    <form action="/Products/AddContent" method="post">
+        Title: <input class="form-control" name="Title" />
+        Content: 
+        <textarea name="Text" id="tiny"></textarea>
+        <br />
+        <input type="submit" value="Create Post!" class="btn btn-success" />
+        <a class="btn btn-danger">Back to Product List</a>
+    </form>
+</main>
 

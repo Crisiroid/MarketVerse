@@ -141,6 +141,10 @@
     <Compile Include="Migrations\202309011452062_AddedContent.designer.cs">
       <DependentUpon>202309011452062_AddedContent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202309021530551_ContentUpdate.cs" />
+    <Compile Include="Migrations\202309021530551_ContentUpdate.designer.cs">
+      <DependentUpon>202309021530551_ContentUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Category.cs" />
@@ -262,6 +266,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202309011452062_AddedContent.resx">
       <DependentUpon>202309011452062_AddedContent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309021530551_ContentUpdate.resx">
+      <DependentUpon>202309021530551_ContentUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
