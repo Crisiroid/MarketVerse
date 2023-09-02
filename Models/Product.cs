@@ -44,7 +44,7 @@ namespace MarketVerse.Models
         public static ProductWithContent ShowProduct(int id)
         {
             Product product = FindProduct(id);
-            Content content = Content.FindContentByProductId(id);
+            Post content = Post.FindContentByProductId(id);
 
             IncreaseProductView(id);
 

@@ -153,5 +153,26 @@ namespace MarketVerse.Controllers
         {
             return View(Product.ShowProduct(id));
         }
+
+        public ActionResult AddContent(int id)
+        {
+            TempData["id"] = id;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddContent(Post content)
+        {
+            content.ProductId = (int)TempData["id"];
+            if (Post.Create(content))
+            {
+                TempData["pm"] = "Content Created Successfully!";
+                return RedirectToAction("Index", "Products");
+            }
+            else
+            {
+                TempData["pm"] = "Something Went Wrong";
+                return RedirectToAction("AddContent");
+            }
+        }
     }
 }

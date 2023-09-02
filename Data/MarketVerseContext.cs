@@ -23,7 +23,7 @@ namespace MarketVerse.Data
         public System.Data.Entity.DbSet<MarketVerse.Models.User> Users { get; set; }
         public System.Data.Entity.DbSet<MarketVerse.Models.Product> Products { get; set; }
         public System.Data.Entity.DbSet<MarketVerse.Models.Admin> Admin { get; set; }
-        public System.Data.Entity.DbSet<MarketVerse.Models.Content> Contents { get; set; }
+        public System.Data.Entity.DbSet<MarketVerse.Models.Post> Contents { get; set; }
         public System.Data.Entity.DbSet<MarketVerse.Models.Category> Categories { get; set; }
         public System.Data.Entity.DbSet<MarketVerse.Models.SubCategory> SubCategories { get; set; }
     }

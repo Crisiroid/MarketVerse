@@ -129,7 +129,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminPanelController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
-    <Compile Include="Controllers\ContentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
@@ -145,7 +144,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\Content.cs" />
+    <Compile Include="Models\Post.cs" />
     <Compile Include="Models\DatabaseModel.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Product.cs" />
@@ -227,11 +226,7 @@
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Products\ViewProductsBasedOnSubCategory.cshtml" />
     <Content Include="Views\Products\ShowProduct.cshtml" />
-    <Content Include="Views\Contents\Create.cshtml" />
-    <Content Include="Views\Contents\Delete.cshtml" />
-    <Content Include="Views\Contents\Details.cshtml" />
-    <Content Include="Views\Contents\Edit.cshtml" />
-    <Content Include="Views\Contents\Index.cshtml" />
+    <Content Include="Views\Products\AddContent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

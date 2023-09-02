@@ -8,6 +8,6 @@ namespace MarketVerse.Models
     public class ProductWithContent
     {
         public Product product { get; set; }
-        public Content content { get; set; }
+        public Post content { get; set; }
     }
 }
