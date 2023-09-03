@@ -16,13 +16,15 @@
         </div>
     </div>
 
+    <br />
+
     <div class="card">
-        <div class="card-header">
+        <div class="card-header bg-info">
             Additional Details
         </div>
         <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <h5 class="card-title">@Model.content.Title</h5>
+            <p class="card-text">@Html.Raw(Model.content.Text)</p>
         </div>
     </div>
 

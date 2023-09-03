@@ -159,7 +159,7 @@ namespace MarketVerse.Controllers
             TempData["id"] = id;
             return View();
         }
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public ActionResult AddContent(Post content)
         {
             content.ProductId = (int)TempData["id"];
