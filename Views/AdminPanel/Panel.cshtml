@@ -1,7 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "Admin's control panel";
-    Layout = "_AdminPanelLayout.cshtml";
+    Layout = "~/Views/Shared/_AdminPanelLayout.cshtml";
 }
 
 <h2>Admin's panel</h2>
@@ -11,15 +11,3 @@
 {
     <div class="alert alert-danger alert-dismissible">@ViewBag.pm</div>
 }
-
-<ul>
-    <li><a href="/AdminPanel/Users">Manage Users</a></li>
-    <li><a href="/Products"> Manage Products</a></li>
-    <li><a href="/AdminPanel/Orders"> Manage Orders</a></li>
-    <li><a href="/AdminPanel/Statics"> Manage Statics</a></li>
-    <li><a href="/Categories"> Manage Categories</a></li>
-    <li><a href="/Subcategories"> Manage Subcategories</a></li>
-    <li><a href="/AdminPanel/SiteSettings"> Site Settings</a></li>
-    <li><a href="/AdminPanel/ViewSite">View Site</a></li>
-    <li><a href="/AdminPanel/Logout">Logout</a></li>
-</ul>

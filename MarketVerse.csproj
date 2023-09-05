@@ -223,6 +223,7 @@
     <Content Include="Views\Products\ViewProductsBasedOnSubCategory.cshtml" />
     <Content Include="Views\Products\ShowProduct.cshtml" />
     <Content Include="Views\Products\AddContent.cshtml" />
+    <Content Include="Views\Shared\_AdminPanelLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
