@@ -8,7 +8,43 @@
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("Styles", required: false)
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #5C8374;
+            text-decoration-color: #93B1A6;
+            color: #ffffff;
+        }
+        .navbar {
+            background-color: #040D12 !important;
+        }
+        .card {
+            background-color: #183D3D;
+        }
+            .card ul {
+                list-style: none; /* Remove bullets */
+                padding-left: 0; /* Remove default list padding */
+            }
 
+            .card li {
+                padding: 10px 0;
+            }
+
+                .card li a {
+                    text-decoration: none;
+                    color: #93B1A6; /* Text color */
+                    background-color: #183D3D; /* Background color */
+                    padding: 10px 20px;
+                    display: block;
+                    transition: background-color 0.3s; /* Add a smooth hover effect */
+                    font-family: Arial, sans-serif; /* Use a common sans-serif font */
+                    font-size: 16px; /* Increase the font size */
+                }
+
+                    .card li a:hover {
+                        background-color: #27005D; /* Hover background color */
+                        color: #fff; /* Text color on hover */
+                    }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -25,7 +61,7 @@
             <!-- Picture (click to open menu) -->
             <div class="dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="menuDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="your-image.jpg" alt="Profile Image" width="40" height="40">
+                    <img src="your-image.jpg" alt="Profile Image" width="20" height="40">
                 </a>
                 <div class="dropdown-menu" aria-labelledby="menuDropdown">
                     <a class="dropdown-item" href="#">Menu Item 1</a>
@@ -37,11 +73,8 @@
     </nav>
 
     <div class="row">
-        <div class="col-3" style="margin: 20px;">
+        <div class="col-3">
             <div class="card">
-                <div class="card-header">
-                    Quick Access
-                </div>
                 <div class="card-body">
                     <ul>
                         <li><a href="/AdminPanel/Users">Manage Users</a></li>
