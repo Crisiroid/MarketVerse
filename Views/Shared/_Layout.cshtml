@@ -1,20 +1,8 @@
 ﻿@{
-    bool AdminLoggedin = false;
-
+    bool AdminLoggedin = Session["Admin"] != null;
     List<MarketVerse.Models.Category> categories = MarketVerse.Models.Category.ShowAllCategories();
     List<MarketVerse.Models.SubCategory> subcategories = MarketVerse.Models.SubCategory.ShowAllSubCategories();
-    if (Session["Admin"] != null)
-    {
-        AdminLoggedin = true;
-
-    }
-    else
-    {
-        AdminLoggedin = false;
-    }
-
-    }
-
+}
 
 <!DOCTYPE html>
 <html>
@@ -26,7 +14,7 @@
     <script>
         tinymce.init({
             selector: 'textarea#tiny',
-                plugins: [
+            plugins: [
                 'a11ychecker', 'advlist', 'advcode', 'advtable', 'autolink', 'checklist', 'export',
                 'lists', 'link', 'image', 'charmap', 'preview', 'anchor', 'searchreplace', 'visualblocks',
                 'powerpaste', 'fullscreen', 'formatpainter', 'insertdatetime', 'media', 'table', 'help', 'wordcount'
@@ -38,53 +26,64 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("Styles", required: false)
+    <style>
+        /* Custom CSS for the navigation bar */
+        .navbar {
+            background-color: #343a40; /* Dark background color */
+        }
+
+        .navbar-brand {
+            color: #ffffff; /* White text color for the brand */
+        }
+
+        .navbar-nav .nav-link {
+            color: #ffffff; /* White text color for links */
+        }
+
+            .navbar-nav .nav-link:hover {
+                color: #f8f9fa; /* Lighter text color on hover */
+            }
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             @Html.ActionLink("MarketVerse", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })
+                    </li>
                     @if (AdminLoggedin)
                     {
-                        <li>
-                        <li>@Html.ActionLink("Admin Panel", "Panel", "AdminPanel", new { area = "" }, new { @class = "nav-link" })</li>
-
+                        <li class="nav-item">
+                            @Html.ActionLink("Admin Panel", "Panel", "AdminPanel", new { area = "" }, new { @class = "nav-link" })
                         </li>
                     }
 
-                    @foreach (var item in categories)
-                    {
-                        <li>
-                            <div class="dropdown">
-                                <a class="nav-link dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    @item.Name
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    @foreach (var subitem in subcategories)
-                                    {
-                                        if (subitem.Code == item.id)
-                                        {
-                                            <a class="dropdown-item" href="/Products/ViewProductsBasedOnSubCategory/@subitem.id">@subitem.Name</a>
-                                            <div class="dropdown-divider"></div>
-                                        }
-
-                                    }
-                                </div>
-                            </div>
-                        </li>
-                    }
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="categoryDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Categories
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="categoryDropdown">
+                            @foreach (var item in categories)
+                            {
+                                <a class="dropdown-item" href="/Products/ViewProductsBasedOnSubCategory/@item.id">@item.Name</a>
+                                <div class="dropdown-divider"></div>
+                            }
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="">
+    <div class="container mt-4">
         @RenderBody()
     </div>
 
