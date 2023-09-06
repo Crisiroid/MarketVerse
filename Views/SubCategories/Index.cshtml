@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "SubCategory List";
+    Layout = "~/Views/Shared/_AdminPanelLayout.cshtml";
 }
 
 <main>
@@ -13,7 +14,7 @@
     }
 
     <p>
-        @Html.ActionLink("Create New", "Create")
+        <a class="btn btn-success" href="/SubCategories/Create">Create a new subcategory</a>
     </p>
     <table class="table table-bordered table-striped">
         <tr>
