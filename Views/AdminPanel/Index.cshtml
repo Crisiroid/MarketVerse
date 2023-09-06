@@ -1,6 +1,7 @@
 ﻿
 @{
-    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+    ViewBag.Title = "Login to Admin Panel";
 }
 
 @section Styles{
@@ -16,11 +17,11 @@
     </style>
 }
 
-@if(ViewBag.pm != null)
-            {
-                <div class="alert alert-danger">@ViewBag.pm</div>
-            }
-<section class="vh-100 gradient-custom">
+<section class="vh-80 gradient-custom">
+    @if (ViewBag.pm != null)
+    {
+        <div class="alert alert-danger">@ViewBag.pm</div>
+    }
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -38,18 +39,17 @@
                                         <label class="form-label" for="typeEmailX">Username</label>
                                     </div>
                                 </center>
-                                
+
                                 <center>
                                     <div class="form-outline form-white mb-4">
                                         <input type="password" class="form-control form-control-lg" name="Password" />
                                         <label class="form-label" for="typePasswordX">Password</label>
                                     </div>
                                 </center>
-                                
+
 
                                 <input type="submit" class="btn btn-outline-light btn-lg px-5" value="Login" />
                             </form>
-
                         </div>
                     </div>
                 </div>

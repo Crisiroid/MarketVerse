@@ -1,6 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "Add a new Content";
+    Layout = "~/Views/Shared/_AdminPanelLayout.cshtml";
 }
 
 
@@ -16,7 +17,7 @@
         <textarea name="Text" id="tiny"></textarea>
         <br />
         <input type="submit" value="Create Post!" class="btn btn-success" />
-        <a class="btn btn-danger">Back to Product List</a>
+        <a class="btn btn-danger" href="/Products/Index">Back to Product List</a>
     </form>
 </main>
 

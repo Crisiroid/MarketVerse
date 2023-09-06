@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "Edit a product";
+    Layout = "~/Views/Shared/_AdminPanelLayout.cshtml";
+
 }
 
 <main>
@@ -81,14 +83,14 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
+                    <input type="submit" value="Save" class="btn btn-success" />
                 </div>
             </div>
         </div>
     }
 
     <div>
-        @Html.ActionLink("Back to List", "Index")
+        <a class="btn btn-danger" href="/Products/Index">Back to List</a>
     </div>
 
 </main>

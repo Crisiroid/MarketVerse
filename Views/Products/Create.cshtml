@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "Create New Product";
+    Layout = "~/Views/Shared/_AdminPanelLayout.cshtml";
+
 }
 
 <main>
@@ -19,7 +21,6 @@
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
-            <h4>Product</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
@@ -88,6 +89,6 @@
     }
 
     <div>
-        @Html.ActionLink("Back to List", "Index")
+        <a class="btn btn-danger" href="/Products/Index">Back to List</a>
     </div>
 </main>
