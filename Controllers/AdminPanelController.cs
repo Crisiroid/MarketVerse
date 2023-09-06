@@ -34,7 +34,7 @@ namespace MarketVerse.Controllers
         {
             if (Admin.isAvailable(admin.Username, admin.Password))
             {
-                Session["Admin"] = "on";
+                Session["Admin"] = admin.Username;
                 TempData["Username"] = admin.Username;
                 TempData["pm"] = "Login SuccessFull. Welcome";
                 return RedirectToAction("Panel", "AdminPanel");
@@ -46,6 +46,16 @@ namespace MarketVerse.Controllers
                 TempData["pm"] = "We don't have you on Record.";
                 return RedirectToAction("Index", "AdminPanel");
             }
+        }
+
+        public ActionResult Logout()
+        {
+
+            Session["Admin"] = null;
+            TempData["Username"] = null;
+            TempData["pm"] = "Operation Done!";
+            return RedirectToAction("Index", "Home");
+
         }
     }
 }

@@ -4,12 +4,17 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Create new Category</h2>
 
-@using (Html.BeginForm()) 
+@if (ViewBag.pm != null)
+{
+    <div class="alert alert-danger alert-dismissible">@ViewBag.pm</div>
+}
+
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Category</h4>
         <hr />

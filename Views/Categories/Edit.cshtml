@@ -1,15 +1,20 @@
 ﻿@model MarketVerse.Models.Category
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edit Category";
 }
 
-<h2>Edit</h2>
+<h2>Edit Category</h2>
+
+@if (ViewBag.pm != null)
+{
+    <div class="alert alert-danger alert-dismissible">@ViewBag.pm</div>
+}
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Category</h4>
         <hr />

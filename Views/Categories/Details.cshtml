@@ -1,10 +1,15 @@
 ﻿@model MarketVerse.Models.Category
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Category Details";
 }
 
-<h2>Details</h2>
+<h2>Category Details</h2>
+
+@if (ViewBag.pm != null)
+{
+    <div class="alert alert-danger alert-dismissible">@ViewBag.pm</div>
+}
 
 <div>
     <h4>Category</h4>

@@ -3,13 +3,15 @@
 @{
     ViewBag.Title = "Product Details";
 }
-@if (ViewBag.pm != null)
-{
-    <div class="alert-dismissible alert-info">@ViewBag.pm</div>
-}
 
-<main style="margin: 20px;">
+
+<main>
     <h2>Details</h2>
+
+    @if (ViewBag.pm != null)
+    {
+        <div class="alert-dismissible alert-info">@ViewBag.pm</div>
+    }
 
     <div>
         <h4>Product Details</h4>

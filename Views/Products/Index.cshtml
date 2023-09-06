@@ -3,14 +3,15 @@
 @{
     ViewBag.Title = "Manage Products";
 }
-@if(ViewBag.pm != null)
-            {
-                <div class="alert alert-dismissible alert-info">@ViewBag.pm</div>
-            }
 
-
-<main style="margin: 20px;">
+<main>
     <h2>Manage Products</h2>
+
+    @if (ViewBag.pm != null)
+    {
+        <div class="alert alert-dismissible alert-info">@ViewBag.pm</div>
+    }
+
     <p>
         @Html.ActionLink("Create New", "Create")
     </p>

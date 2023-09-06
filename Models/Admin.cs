@@ -17,5 +17,6 @@ namespace MarketVerse.Models
         {
             return DatabaseModel.db.Admin.Any(x => x.Username == Username && x.Password == Password);
         }
+
     }
 }

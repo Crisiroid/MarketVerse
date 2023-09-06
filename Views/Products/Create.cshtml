@@ -3,14 +3,16 @@
 @{
     ViewBag.Title = "Create New Product";
 }
-@if (ViewBag.pm != null)
-{
-    <div class="alert-dismissible alert-info">@ViewBag.pm</div>
-}
 
-<main style="margin: 20px;">
+<main>
 
     <h2>Create A new product</h2>
+
+    @if (ViewBag.pm != null)
+    {
+        <div class="alert-dismissible alert-info">@ViewBag.pm</div>
+    }
+
 
     @using (Html.BeginForm())
     {

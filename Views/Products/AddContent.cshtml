@@ -1,12 +1,18 @@
 ﻿
 @{
-    ViewBag.Title = "AddContent";
+    ViewBag.Title = "Add a new Content";
 }
 
-<main style="margin: 20px;">
+
+
+<main>
+    @if (ViewBag.pm != null)
+    {
+        <div class="alert alert-danger alert-dismissible">@ViewBag.pm</div>
+    }
     <form action="/Products/AddContent" method="post">
         Title: <input class="form-control" name="Title" />
-        Content: 
+        Content:
         <textarea name="Text" id="tiny"></textarea>
         <br />
         <input type="submit" value="Create Post!" class="btn btn-success" />

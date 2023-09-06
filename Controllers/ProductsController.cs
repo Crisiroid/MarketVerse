@@ -156,12 +156,14 @@ namespace MarketVerse.Controllers
 
         public ActionResult AddContent(int id)
         {
+            if (Session["Admin"] == null) return HttpNotFound();
             TempData["id"] = id;
             return View();
         }
         [HttpPost, ValidateInput(false)]
         public ActionResult AddContent(Post content)
         {
+            if (Session["Admin"] == null) return HttpNotFound();
             content.ProductId = (int)TempData["id"];
             if (Post.Create(content))
             {
