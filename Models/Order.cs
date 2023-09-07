@@ -13,7 +13,7 @@ namespace MarketVerse.Models
         [Required] public DateTime OrderDate { get; set; }
         [Required] public string OrderStatus { get; set; }
         public string TrackingID { get; set; }
-        public User user { get; set; }
+        public Customer user { get; set; }
 
         //Products information
         [Required] public List<Product> products { get; set; }

@@ -1,34 +1,34 @@
-﻿using System;
+﻿using MarketVerse.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using MarketVerse.Data;
-using MarketVerse.Models;
 
 namespace MarketVerse.Controllers
 {
     public class UsersController : Controller
     {
-        private MarketVerseContext db = new MarketVerseContext();
-
-        // GET: Users
         public ActionResult Index()
         {
-            return View(db.Users.ToList());
+            if (Session["Admin"] == null) return HttpNotFound();
+            if (TempData["pm"] != null)
+            {
+                ViewBag.pm = TempData["pm"].ToString();
+                TempData.Clear();
+            }
+            return View(Customer.ShowAllUsers());
         }
 
-        // GET: Users/Details/5
         public ActionResult Details(int? id)
         {
+            if (Session["Admin"] == null) return HttpNotFound();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
+            Customer user = Customer.FindBuyer((int)id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -36,37 +36,43 @@ namespace MarketVerse.Controllers
             return View(user);
         }
 
-        // GET: Users/Create
         public ActionResult Create()
         {
+            if (TempData["pm"] != null)
+            {
+                ViewBag.pm = TempData["pm"].ToString();
+                TempData.Clear();
+            }
             return View();
         }
 
-        // POST: Users/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,Name,Lastname,Email,Username,Password,Phonenumber,Providence,City,Address,IpAddress,Browser,Operatingsystem")] User user)
+        public ActionResult Create(Customer user)
         {
-            if (ModelState.IsValid)
+            if (Customer.Create(user))
             {
-                db.Users.Add(user);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Login", "Users");
             }
-
-            return View(user);
+            else
+            {
+                TempData["pm"] = "Something went wrong!";
+                return View();
+            }
         }
 
-        // GET: Users/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (TempData["pm"] != null)
+            {
+                ViewBag.pm = TempData["pm"].ToString();
+                TempData.Clear();
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
+            Customer user = Customer.FindBuyer((int)id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -74,30 +80,31 @@ namespace MarketVerse.Controllers
             return View(user);
         }
 
-        // POST: Users/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,Name,Lastname,Email,Username,Password,Phonenumber,Providence,City,Address,IpAddress,Browser,Operatingsystem")] User user)
+        public ActionResult Edit(Customer user)
         {
-            if (ModelState.IsValid)
+
+            if (Customer.Edit(user))
             {
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
+                TempData["pm"] = "Customer Updated!";
                 return RedirectToAction("Index");
             }
-            return View(user);
+            else
+            {
+                TempData["pm"] = "Something Went Wrong!";
+                return RedirectToAction("Index");
+            }
         }
 
-        // GET: Users/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (Session["Admin"] == null) return HttpNotFound();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
+            Customer user = Customer.FindBuyer((int)id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -105,24 +112,20 @@ namespace MarketVerse.Controllers
             return View(user);
         }
 
-        // POST: Users/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            User user = db.Users.Find(id);
-            db.Users.Remove(user);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
+            if (Session["Admin"] == null) return HttpNotFound();
+            if(Customer.Delete(id))
             {
-                db.Dispose();
+                TempData["pm"] = "User Deleted";
             }
-            base.Dispose(disposing);
+            else
+            {
+                TempData["pm"] = "Something went wrong;";
+            }
+            return RedirectToAction("Index");
         }
     }
 }

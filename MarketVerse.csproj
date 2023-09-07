@@ -147,7 +147,7 @@
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductWithContent.cs" />
     <Compile Include="Models\SubCategory.cs" />
-    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

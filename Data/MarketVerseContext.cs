@@ -20,7 +20,7 @@ namespace MarketVerse.Data
         }
 
         public System.Data.Entity.DbSet<MarketVerse.Models.Order> Orders { get; set; }
-        public System.Data.Entity.DbSet<MarketVerse.Models.User> Users { get; set; }
+        public System.Data.Entity.DbSet<MarketVerse.Models.Customer> Users { get; set; }
         public System.Data.Entity.DbSet<MarketVerse.Models.Product> Products { get; set; }
         public System.Data.Entity.DbSet<MarketVerse.Models.Admin> Admin { get; set; }
         public System.Data.Entity.DbSet<MarketVerse.Models.Post> Contents { get; set; }
