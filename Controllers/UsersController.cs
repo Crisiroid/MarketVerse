@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
 
 namespace MarketVerse.Controllers
@@ -47,13 +48,15 @@ namespace MarketVerse.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Register(Customer user)
         {
             user.Address = "-";
             user.Providence = "-";
             user.Orders = "-";
             user.City = "_";
+            user.IpAddress = Request.UserHostAddress;
+            user.Browser = Request.Browser.Browser;
+            user.Operatingsystem = Request.Browser.Platform;
             user.Password = HashTool.HashPassword(user.Password);
             if (Customer.Create(user))
             {
@@ -118,7 +121,6 @@ namespace MarketVerse.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             if (Session["Admin"] == null) return HttpNotFound();
@@ -131,6 +133,16 @@ namespace MarketVerse.Controllers
                 TempData["pm"] = "Something went wrong;";
             }
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        public ActionResult Login(string Username, string Password)
+        {
+            return View();
         }
 
         public JsonResult CheckUsernameAvailability(string username)
