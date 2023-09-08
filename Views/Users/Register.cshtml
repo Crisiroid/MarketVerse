@@ -1,0 +1,92 @@
+﻿@model MarketVerse.Models.Customer
+
+@{
+    ViewBag.Title = "Login or Signup";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+@section Styles{
+    <style>
+        .gradient-custom {
+            /* fallback for old browsers */
+            background: #6a11cb;
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+        }
+
+        /* Add this style to create a custom border for the inputs */
+        .border-custom {
+            border: 2px solid #fff; /* You can customize the border color and width */
+            border-radius: 0.5rem; /* You can adjust the border radius to control the corner curvature */
+        }
+    </style>
+}
+<main>
+    <section class="vh-80 gradient-custom">
+        @if (ViewBag.pm != null)
+        {
+            <div class="alert alert-danger">@ViewBag.pm</div>
+        }
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                        <div class="card-body p-5 text-center">
+
+                            <div class="mb-md-5 mt-md-4 pb-5">
+
+                                <h2 class="fw-bold mb-2 text-uppercase">Sign Up!</h2>
+                                <p class="text-white-50 mb-5">Please fill out the following form!</p>
+                                <form action="/Users/Register" method="post">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-outline form-white mb-4">
+                                                <label class="form-label" for="Name">First Name</label>
+                                                <input type="text" class="form-control form-control-lg border-custom" name="Name" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-outline form-white mb-4">
+                                                <label class="form-label" for="Lastname">Last Name</label>
+                                                <input type="text" class="form-control form-control-lg border-custom" name="Lastname" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-outline form-white mb-4">
+                                                <label class="form-label" for="Email">Email</label>
+                                                <input type="email" class="form-control form-control-lg border-custom" name="Email" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-outline form-white mb-4">
+                                                <label class="form-label" for="Phonenumber">Phone Number</label>
+                                                <input type="text" class="form-control form-control-lg border-custom" name="Phonenumber" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-outline form-white mb-4">
+                                        <center>
+                                            <label class="form-label" for="Username">Username</label>
+                                            <input type="text" class="form-control form-control-lg border-custom" name="Username" />
+                                        </center>
+                                    </div>
+                                    <div class="form-outline form-white mb-4">
+                                        <center>
+                                            <label class="form-label" for="typePasswordX">Password</label>
+                                            <input type="password" class="form-control form-control-lg border-custom" name="Password" />
+                                        </center>
+                                    </div>
+                                    <input type="submit" class="btn btn-outline-light btn-lg px-5" value="Sign up!" />
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

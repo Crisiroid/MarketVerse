@@ -36,7 +36,7 @@ namespace MarketVerse.Controllers
             return View(user);
         }
 
-        public ActionResult Create()
+        public ActionResult Register()
         {
             if (TempData["pm"] != null)
             {
@@ -48,7 +48,7 @@ namespace MarketVerse.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Customer user)
+        public ActionResult Register(Customer user)
         {
             if (Customer.Create(user))
             {
