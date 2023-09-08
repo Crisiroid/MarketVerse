@@ -30,9 +30,7 @@ namespace MarketVerse.Models
         [Required] public string Browser { get; set; }
         [Required] public string Operatingsystem { get; set; }
 
-        //User's orders
-        public List<Order> orders { get; set; }
-
+        [Required] public string Orders { get; set; }
         public static List<Customer> ShowAllUsers()
         {
             return DatabaseModel.db.Users.ToList();

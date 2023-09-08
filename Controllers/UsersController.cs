@@ -50,6 +50,11 @@ namespace MarketVerse.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register(Customer user)
         {
+            user.Address = "-";
+            user.Providence = "-";
+            user.Orders = "-";
+            user.City = "_";
+            user.Password = HashTool.HashPassword(user.Password);
             if (Customer.Create(user))
             {
                 return RedirectToAction("Login", "Users");
