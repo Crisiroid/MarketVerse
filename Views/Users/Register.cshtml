@@ -72,6 +72,7 @@
                                         <center>
                                             <label class="form-label" for="Username">Username</label>
                                             <input type="text" class="form-control form-control-lg border-custom" name="Username" />
+                                            <div id="username-status" style="color: red; font-weight: bold;"></div>
                                         </center>
                                     </div>
                                     <div class="form-outline form-white mb-4">
@@ -90,3 +91,28 @@
         </div>
     </section>
 </main>
+
+
+@section scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#username').on('keyup', function () {
+                var username = $(this).val();
+
+                $.ajax({
+                    type: 'GET',
+                    url: '/Users/CheckUsernameAvailability',
+                    data: { username: username },
+                    success: function (data) {
+                        if (data.IsAvailable) {
+                            $('#username-status').text('Username is available.');
+                        } else {
+                            $('#username-status').text('Username is not available.');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+}

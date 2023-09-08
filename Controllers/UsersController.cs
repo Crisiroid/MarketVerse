@@ -127,5 +127,13 @@ namespace MarketVerse.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        public JsonResult CheckUsernameAvailability(string username)
+        {
+            bool isAvailable = Customer.CheckUsernameAvailability(username);
+
+
+            return Json(new { IsAvailable = isAvailable }, JsonRequestBehavior.AllowGet);
+        }
     }
 }
