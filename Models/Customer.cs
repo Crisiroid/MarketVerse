@@ -41,6 +41,10 @@ namespace MarketVerse.Models
             return DatabaseModel.db.Users.Find(id);
         }
 
+        public static bool FindCustomerByUsername(string Username, string Password)
+        {
+            return DatabaseModel.db.Users.Any(x => x.Username == Username && x.Password == Password);
+        }
         public static bool CheckUsernameAvailability(string Username)
         {
             return DatabaseModel.db.Users.Any(u => u.Username == Username);

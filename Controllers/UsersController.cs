@@ -139,9 +139,10 @@ namespace MarketVerse.Controllers
         {
             return View();
         }
-
+        [HttpPost]
         public ActionResult Login(string Username, string Password)
         {
+            
             return View();
         }
 
