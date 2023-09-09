@@ -151,7 +151,7 @@ namespace MarketVerse.Controllers
             }
             else
             {
-                TempData["pm"] = "We couldn't find you. please register"
+                TempData["pm"] = "We couldn't find you. please register";
                 return View();
             }
         }

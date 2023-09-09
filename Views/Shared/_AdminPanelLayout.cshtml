@@ -109,6 +109,11 @@
             </div>
         </div>
         <div class="col-9">
+
+            @if (ViewBag.pm != null)
+            {
+                <div class="alert alert-danger alert-dismissible">@ViewBag.pm</div>
+            }
             @RenderBody()
         </div>
 

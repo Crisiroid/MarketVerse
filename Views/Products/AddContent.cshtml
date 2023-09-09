@@ -7,10 +7,6 @@
 
 
 <main>
-    @if (ViewBag.pm != null)
-    {
-        <div class="alert alert-danger alert-dismissible">@ViewBag.pm</div>
-    }
     <form action="/Products/AddContent" method="post">
         Title: <input class="form-control" name="Title" />
         Content:

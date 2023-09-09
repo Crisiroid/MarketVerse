@@ -9,12 +9,6 @@
 <main>
     <h2>Create SubCategory</h2>
 
-    @if (ViewBag.pm != null)
-    {
-        <div class="alert alert-dismissible alert-info">@ViewBag.pm</div>
-    }
-
-
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
