@@ -143,7 +143,17 @@ namespace MarketVerse.Controllers
         public ActionResult Login(string Username, string Password)
         {
             
-            return View();
+            if(Customer.FindCustomerByUsername(Username, Password))
+            {
+                Session["User"] = Username;
+                TempData["pm"] = "Login Successful! Welcome.";
+                return RedirectToAction("Index", "Userpanel");
+            }
+            else
+            {
+                TempData["pm"] = "We couldn't find you. please register"
+                return View();
+            }
         }
 
         public JsonResult CheckUsernameAvailability(string username)
