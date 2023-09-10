@@ -143,7 +143,7 @@ namespace MarketVerse.Controllers
         public ActionResult Login(string Username, string Password)
         {
             
-            if(Customer.FindCustomerByUsername(Username, Password))
+            if(Customer.FindCustomerByUsername(Username, HashTool.HashPassword(Password)))
             {
                 Session["User"] = Username;
                 TempData["pm"] = "Login Successful! Welcome.";
