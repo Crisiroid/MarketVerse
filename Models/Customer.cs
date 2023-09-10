@@ -49,6 +49,11 @@ namespace MarketVerse.Models
         {
             return DatabaseModel.db.Users.Any(u => u.Username == Username);
         }
+
+        public static bool IsUserAvailable(string Username, string Email, string Phonenumber)
+        {
+            return DatabaseModel.db.Users.Any(x => x.Username == Username ||  x.Email == Email || x.Phonenumber == Phonenumber);
+        }
         public static bool Create(Customer buyer)
         {
             try

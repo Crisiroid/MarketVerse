@@ -42,7 +42,6 @@ namespace MarketVerse.Controllers
             if (TempData["pm"] != null)
             {
                 ViewBag.pm = TempData["pm"].ToString();
-                TempData.Clear();
             }
             return View();
         }
@@ -50,22 +49,34 @@ namespace MarketVerse.Controllers
         [HttpPost]
         public ActionResult Register(Customer user)
         {
-            user.Address = "-";
-            user.Providence = "-";
-            user.Orders = "-";
-            user.City = "_";
-            user.IpAddress = Request.UserHostAddress;
-            user.Browser = Request.Browser.Browser;
-            user.Operatingsystem = Request.Browser.Platform;
-            user.Password = HashTool.HashPassword(user.Password);
-            if (Customer.Create(user))
+            if (TempData["pm"] != null)
             {
-                return RedirectToAction("Login", "Users");
+                ViewBag.pm = TempData["pm"].ToString();
+            }
+            if (Customer.IsUserAvailable(user.Username, user.Email, user.Phonenumber))
+            {
+                TempData["pm"] = "This User is available. please choose another User";
+                return View();
             }
             else
             {
-                TempData["pm"] = "Something went wrong!";
-                return View();
+                user.Address = "-";
+                user.Providence = "-";
+                user.Orders = "-";
+                user.City = "_";
+                user.IpAddress = Request.UserHostAddress;
+                user.Browser = Request.Browser.Browser;
+                user.Operatingsystem = Request.Browser.Platform;
+                user.Password = HashTool.HashPassword(user.Password);
+                if (Customer.Create(user))
+                {
+                    return RedirectToAction("Login", "Users");
+                }
+                else
+                {
+                    TempData["pm"] = "Something went wrong!";
+                    return View();
+                }
             }
         }
 
@@ -74,7 +85,6 @@ namespace MarketVerse.Controllers
             if (TempData["pm"] != null)
             {
                 ViewBag.pm = TempData["pm"].ToString();
-                TempData.Clear();
             }
             if (id == null)
             {
@@ -137,13 +147,21 @@ namespace MarketVerse.Controllers
 
         public ActionResult Login()
         {
+            if (TempData["pm"] != null)
+            {
+                ViewBag.pm = TempData["pm"].ToString();
+            }
             return View();
         }
         [HttpPost]
         public ActionResult Login(string Username, string Password)
         {
-            
-            if(Customer.FindCustomerByUsername(Username, HashTool.HashPassword(Password)))
+            if (TempData["pm"] != null)
+            {
+                ViewBag.pm = TempData["pm"].ToString();
+            }
+
+            if (Customer.FindCustomerByUsername(Username, HashTool.HashPassword(Password)))
             {
                 Session["User"] = Username;
                 TempData["pm"] = "Login Successful! Welcome.";
