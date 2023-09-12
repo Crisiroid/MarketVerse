@@ -36,11 +36,16 @@ namespace MarketVerse.Models
             return DatabaseModel.db.Users.ToList();
         }
 
+        //Finding Methods
         public static Customer FindBuyer(int id)
         {
             return DatabaseModel.db.Users.Find(id);
         }
 
+        public static Customer FindCustomerUsingUsername(string Username)
+        {
+            return DatabaseModel.db.Users.FirstOrDefault(x => x.Username == Username);
+        }
         public static bool FindCustomerByUsername(string Username, string Password)
         {
             return DatabaseModel.db.Users.Any(x => x.Username == Username && x.Password == Password);
@@ -66,6 +71,8 @@ namespace MarketVerse.Models
                 return false;
             }
         }
+
+        //Changind Methods
         public static bool Edit(Customer buyer)
         {
             try

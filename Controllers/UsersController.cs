@@ -165,7 +165,7 @@ namespace MarketVerse.Controllers
             {
                 Session["User"] = Username;
                 TempData["pm"] = "Login Successful! Welcome.";
-                return RedirectToAction("Index", "Userpanel");
+                return RedirectToAction("Index", "Userpanel", new {Username = Session["User"].ToString() });
             }
             else
             {

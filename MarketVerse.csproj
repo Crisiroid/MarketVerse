@@ -133,6 +133,7 @@
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\SubCategoriesController.cs" />
+    <Compile Include="Controllers\UserPanelController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Data\MarketVerseContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -233,6 +234,8 @@
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\Login.cshtml" />
+    <Content Include="Views\Shared\_UserPanelLayout.cshtml" />
+    <Content Include="Views\UserPanel\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
