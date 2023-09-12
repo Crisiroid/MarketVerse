@@ -14,82 +14,26 @@
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("Styles", required: false)
     <style>
-        /* Custom CSS for the navigation bar */
+        
         .navbar {
-            background-color: #343a40; /* Dark background color */
+            background-color: #343a40; 
         }
 
         .navbar-brand {
-            color: #ffffff; /* White text color for the brand */
+            color: #ffffff; 
         }
 
         .navbar-nav .nav-link {
-            color: #ffffff; /* White text color for links */
+            color: #ffffff; 
         }
 
             .navbar-nav .nav-link:hover {
-                color: #f8f9fa; /* Lighter text color on hover */
+                color: #f8f9fa; 
             }
     </style>
 </head>
+    @Html.Partial("Navbar")
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            @Html.ActionLink("MarketVerse", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
-                    </li>
-                    <li class="nav-item">
-                        @Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })
-                    </li>
-                    @if (AdminLoggedin)
-                    {
-                        <li class="nav-item">
-                            @Html.ActionLink("Admin Panel", "Panel", "AdminPanel", new { area = "" }, new { @class = "nav-link" })
-                        </li>
-                    }
-                    @foreach (var item in categories)
-                    {
-                        <li>
-                            <div class="dropdown">
-                                <a class="nav-link dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    @item.Name
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    @foreach (var subitem in subcategories)
-                                    {
-                                        if (subitem.Code == item.id)
-                                        {
-                                            <a class="dropdown-item" href="#">@subitem.Name</a>
-                                            <div class="dropdown-divider"></div>
-                                        }
-
-                                    }
-                                </div>
-                            </div>
-                        </li>
-                    }
-                </ul>
-            </div>
-            <!-- Add the new button here -->
-            <div class="ml-auto">
-                <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Login
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="@Url.Action("Register", "Users", new { area = "" })">Register</a>
-                        <a class="dropdown-item" href="@Url.Action("Login", "Users", new { area = "" })">Login</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
     <div class="container mt-4">
 
         @if (ViewBag.pm != null)

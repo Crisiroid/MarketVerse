@@ -8,27 +8,69 @@
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("Styles", required: false)
     <style>
-        /* Custom CSS for the navigation bar */
+        body {
+            background-color: #5C8374;
+            text-decoration-color: #93B1A6;
+            color: #ffffff;
+        }
         .navbar {
-            background-color: #343a40; /* Dark background color */
+            background-color: #343a40; 
         }
 
         .navbar-brand {
-            color: #ffffff; /* White text color for the brand */
+            color: #ffffff; 
         }
 
         .navbar-nav .nav-link {
-            color: #ffffff; /* White text color for links */
+            color: #ffffff; 
         }
 
             .navbar-nav .nav-link:hover {
-                color: #f8f9fa; /* Lighter text color on hover */
+                color: #f8f9fa; 
             }
+
+        .card {
+            background-color: #183D3D;
+        }
+
+            .card ul {
+                list-style: none; 
+                padding-left: 0; 
+            }
+
+            .card li {
+                padding: 10px 0;
+            }
+
+                .card li a {
+                    text-decoration: none;
+                    color: #93B1A6; 
+                    background-color: #183D3D; 
+                    padding: 10px 20px;
+                    display: block;
+                    transition: background-color 0.3s; 
+                    font-family: Arial, sans-serif; 
+                    font-size: 16px; 
+                }
+
+                    .card li a:hover {
+                        background-color: #27005D; 
+                        color: #fff; 
+                    }
     </style>
 </head>
 <body>
+    @Html.Partial("Navbar")
     <div>
         @RenderBody()
     </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 </body>
 </html>
