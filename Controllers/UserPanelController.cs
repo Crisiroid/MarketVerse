@@ -14,5 +14,12 @@ namespace MarketVerse.Controllers
             Customer user = Customer.FindCustomerUsingUsername(Username);
             return View(user);
         }
+
+        public ActionResult Logout()
+        {
+            Session["User"] = null;
+            TempData.Clear();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

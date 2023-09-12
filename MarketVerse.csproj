@@ -237,7 +237,6 @@
     <Content Include="Views\Shared\_UserPanelLayout.cshtml" />
     <Content Include="Views\UserPanel\Index.cshtml" />
     <Content Include="Views\Shared\Navbar.cshtml" />
-    <Content Include="Views\Shared\Sidebar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
