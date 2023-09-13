@@ -16,31 +16,31 @@
 }
 
 
-<nav class="navbar navbar-expand-lg navbar-dark">
+<nav class="navbar navbar-expand-lg shadow-sm p-3 mb-5 bg-white rounded" style="margin: 10px; background-color: #F0F0F0 !important;">
     <div class="container">
-        @Html.ActionLink("MarketVerse", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        @Html.ActionLink("MarketVerse", "Index", "Home", new { area = "" }, new { @class = "navbar-brand text-dark" })
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+                    @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link link-dark" })
                 </li>
                 <li class="nav-item">
-                    @Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })
+                    @Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link link-dark" })
                 </li>
                 @if (AdminLoggedin)
                 {
                     <li class="nav-item">
-                        @Html.ActionLink("Admin Panel", "Panel", "AdminPanel", new { area = "" }, new { @class = "nav-link" })
+                        @Html.ActionLink("Admin Panel", "Panel", "AdminPanel", new { area = "" }, new { @class = "nav-link link-dark" })
                     </li>
                 }
                 @foreach (var item in categories)
                 {
                     <li>
                         <div class="dropdown">
-                            <a class="nav-link dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle link-dark" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 @item.Name
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -48,7 +48,7 @@
                                 {
                                     if (subitem.Code == item.id)
                                     {
-                                        <a class="dropdown-item" href="#">@subitem.Name</a>
+                                        <a class="dropdown-item" href="/Products/ViewProductsBasedOnSubCategory/@subitem.id">@subitem.Name</a>
                                         <div class="dropdown-divider"></div>
                                     }
 
