@@ -11,9 +11,10 @@ namespace MarketVerse.Models
     {
         [Key] public int id { get; set; }
         [Required] public string Name { get; set; }
-        [Required] public string SubcategoryCount { get; set; }
+        [Required] public int SubcategoryCount { get; set; }
 
 
+        //Finding Methods
         public static List<Category> ShowAllCategories()
         {
             return DatabaseModel.db.Categories.ToList();
@@ -24,6 +25,7 @@ namespace MarketVerse.Models
             return DatabaseModel.db.Categories.Find(id);
         }
 
+        //Editing Methods
         public static bool Create(Category category)
         {
             try
@@ -68,6 +70,13 @@ namespace MarketVerse.Models
                 return false;
             }
 
+        }
+
+        public static void IncreaseCount(int id)
+        {
+            Category category = Category.FindCategory(id);
+            category.SubcategoryCount += 1;
+            DatabaseModel.db.SaveChanges();
         }
     }
 }

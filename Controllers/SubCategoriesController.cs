@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
+﻿using System.Net;
 using System.Web.Mvc;
-using MarketVerse.Data;
 using MarketVerse.Models;
 
 namespace MarketVerse.Controllers
@@ -49,6 +42,7 @@ namespace MarketVerse.Controllers
 
             if (SubCategory.Create(subCategory))
             {
+                Category.IncreaseCount(subCategory.Code);
                 return RedirectToAction("Index", "SubCategories");
             }
             else
