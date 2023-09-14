@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width - 20px" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -26,6 +26,7 @@
             background-color: #5C8374;
             text-decoration-color: #93B1A6;
             color: #ffffff;
+            width: 99%!important;
         }
 
         .navbar {
@@ -39,8 +40,7 @@
         }
 
             .card ul {
-                list-style: none; 
-                padding-left: 0; 
+                list-style: none;
             }
 
             .card li {
@@ -49,18 +49,18 @@
 
                 .card li a {
                     text-decoration: none;
-                    color: #93B1A6; 
-                    background-color: #183D3D; 
-                    padding: 10px 20px;
+                    color: #93B1A6;
+                    background-color: #183D3D;
+                    padding: 10px 0px;
                     display: block;
-                    transition: background-color 0.3s; 
-                    font-family: Arial, sans-serif; 
-                    font-size: 16px; 
+                    transition: background-color 0.3s;
+                    font-family: Arial, sans-serif;
+                    font-size: 16px;
                 }
 
                     .card li a:hover {
-                        background-color: #27005D; 
-                        color: #fff; 
+                        background-color: #27005D;
+                        color: #fff;
                     }
     </style>
 </head>
