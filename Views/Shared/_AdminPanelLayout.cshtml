@@ -90,7 +90,7 @@
             <div class="card">
                 <div class="card-body">
                     <ul>
-                        <li><a href="/AdminPanel/Users">Manage Users</a></li>
+                        <li><a href="/Users">Manage Users</a></li>
                         <li><a href="/Products"> Manage Products</a></li>
                         <li><a href="/AdminPanel/Orders"> Manage Orders</a></li>
                         <li><a href="/AdminPanel/Statics"> Manage Statics</a></li>
@@ -107,10 +107,13 @@
 
             @if (ViewBag.pm != null)
             {
-                <div class="alert alert-danger alert-dismissible">@ViewBag.pm</div>
+                <div id="myAlert" class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    @ViewBag.pm
+                </div>
             }
-            @RenderBody()
-        </div>
+                @RenderBody()
+            </div>
 
     </div>
 
@@ -121,5 +124,11 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+    <script>
+        // Automatically close the alert after 10 seconds (10000 milliseconds)
+        setTimeout(function () {
+            $('#myAlert').alert('close');
+        }, 10000);
+    </script>
 </body>
 </html>
