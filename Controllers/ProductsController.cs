@@ -1,4 +1,7 @@
-﻿using System.Net;
+﻿using System.IO;
+using System;
+using System.Net;
+using System.Web;
 using System.Web.Mvc;
 using MarketVerse.Models;
 
@@ -54,8 +57,22 @@ namespace MarketVerse.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Product product)
+        public ActionResult Create(Product product, HttpPostedFileBase imageFile)
         {
+            if (imageFile != null && imageFile.ContentLength > 0)
+            {
+                // Generate a unique filename for the image
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(imageFile.FileName);
+
+                // Define the path where the image will be saved
+                string imagePath = Path.Combine(Server.MapPath("~/images"), uniqueFileName);
+
+                // Save the image to the server
+                imageFile.SaveAs(imagePath);
+
+                // Set the ImageFileName property of the product to the unique filename
+                product.ImageFileName = uniqueFileName;
+            }
             if (Product.Create(product))
             {
                 TempData["pm"] = "Product Added";

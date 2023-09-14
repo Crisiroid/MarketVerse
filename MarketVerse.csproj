@@ -143,6 +143,14 @@
     <Compile Include="Migrations\202309131618189_updateCategory.designer.cs">
       <DependentUpon>202309131618189_updateCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202309141515001_productUpdate.cs" />
+    <Compile Include="Migrations\202309141515001_productUpdate.designer.cs">
+      <DependentUpon>202309141515001_productUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202309141522370_productUpdate1.cs" />
+    <Compile Include="Migrations\202309141522370_productUpdate1.designer.cs">
+      <DependentUpon>202309141522370_productUpdate1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Category.cs" />
@@ -275,6 +283,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202309131618189_updateCategory.resx">
       <DependentUpon>202309131618189_updateCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309141515001_productUpdate.resx">
+      <DependentUpon>202309141515001_productUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309141522370_productUpdate1.resx">
+      <DependentUpon>202309141522370_productUpdate1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
