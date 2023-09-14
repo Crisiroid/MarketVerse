@@ -57,7 +57,7 @@ namespace MarketVerse.Models
 
         }
 
-        public static bool Create(Product product)
+        public static string Create(Product product)
         {
             try
             {
@@ -65,10 +65,20 @@ namespace MarketVerse.Models
                 product.Views = 0;
                 DatabaseModel.db.Products.Add(product);
                 DatabaseModel.db.SaveChanges();
-                return true;
+                return "true";
             }catch(Exception ex)
             {
-                return false;
+                string errorMessage = ex.Message;
+
+                if (ex.InnerException != null)
+                {
+                    errorMessage += " Inner Exception: " + ex.InnerException.Message;
+                }
+
+                // Log or print the error message for debugging
+                Console.WriteLine(errorMessage);
+
+                return errorMessage;
             }
         }
 

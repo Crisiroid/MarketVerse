@@ -64,8 +64,13 @@ namespace MarketVerse.Controllers
                 // Generate a unique filename for the image
                 string uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(imageFile.FileName);
 
-                // Define the path where the image will be saved
                 string imagePath = Path.Combine(Server.MapPath("~/images"), uniqueFileName);
+
+                // Ensure the directory exists
+                Directory.CreateDirectory(Path.GetDirectoryName(imagePath));
+
+                // Save the image to the server
+                imageFile.SaveAs(imagePath);
 
                 // Save the image to the server
                 imageFile.SaveAs(imagePath);
@@ -73,14 +78,19 @@ namespace MarketVerse.Controllers
                 // Set the ImageFileName property of the product to the unique filename
                 product.ImageFileName = uniqueFileName;
             }
-            if (Product.Create(product))
+            else
+            {
+                product.ImageFileName = ".....";
+            }
+            string pm = Product.Create(product);
+            if (pm == "true")
             {
                 TempData["pm"] = "Product Added";
                 return RedirectToAction("Index", "Products");
             }
             else
             {
-                TempData["pm"] = "Something went wrong!";
+                TempData["pm"] = pm;
                 return RedirectToAction("Create", "Products");
             }
         }
