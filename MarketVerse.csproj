@@ -155,6 +155,7 @@
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\HashTool.cs" />
+    <Compile Include="Models\PFMP.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\DatabaseModel.cs" />
     <Compile Include="Models\Order.cs" />

@@ -1,10 +1,4 @@
-﻿@{
-    bool AdminLoggedin = Session["Admin"] != null;
-    List<MarketVerse.Models.Category> categories = MarketVerse.Models.Category.ShowAllCategories();
-    List<MarketVerse.Models.SubCategory> subcategories = MarketVerse.Models.SubCategory.ShowAllSubCategories();
-}
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -18,10 +12,23 @@
         body {
             background-color: #2f2fa2;
         }
+        .PBP{
+            padding: 20px;
+            background-color: #DAAD86;
+            margin: 10px;
+        }
+        .P{
+            padding: 25px; 
+            background: #BC986A;
+            margin: 10px;
+        }
+        .PBV{
+            padding: 30px;
+            background-color: #FBEEC1;
+            margin: 10px;
+        }
         main {
             background-color: #F5F5F5;
-            margin: 0px 10px 10px 10px;
-            padding: 20px;
         }
         .navbar {
             background-color: #343a40;

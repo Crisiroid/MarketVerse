@@ -1,6 +1,9 @@
-﻿@model IEnumerable<MarketVerse.Models.Product>
+﻿@model MarketVerse.Models.PFMP
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "MarketVerse";
+    List<MarketVerse.Models.Product> PBV = Model.PBV;
+    List<MarketVerse.Models.Product> P = Model.Products;
+    List<MarketVerse.Models.Product> PBP = Model.PBP;
 }
 
 @section Styles{
@@ -23,7 +26,7 @@
     }
 }
 
-<main class="rounded shadow-sm">
+<main>
     <div class="slideshow rounded" style="padding: 10px; background-color: #DDE9F0; ">
 
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -53,22 +56,63 @@
     </div>
 
     <br />
+    <div class="P">
+        <h2>Latest products</h2>
+        <div class="latest-products-wrapper">
 
-    <h2>Latest products</h2>
-    <div class="latest-products-wrapper">
-
-        <div class="latest-products-container">
-            @foreach (var item in Model)
-            {
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">@item.Name</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">@item.Description</h6>
-                        <p class="card-text">Price: @item.Price</p>
-                        <a href="/Products/ShowProduct/@item.id" class="card-link">View Details</a>
+            <div class="latest-products-container">
+                @foreach (var item in P)
+                {
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Name</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">@item.Description</h6>
+                            <p class="card-text">Price: @item.Price</p>
+                            <a href="/Products/ShowProduct/@item.id" class="card-link">View Details</a>
+                        </div>
                     </div>
-                </div>
-            }
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="PBV">
+        <h2>Most Viewed Products</h2>
+        <div class="latest-products-wrapper">
+
+            <div class="latest-products-container">
+                @foreach (var item in PBV)
+                {
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Name</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">@item.Description</h6>
+                            <p class="card-text">Price: @item.Price</p>
+                            <a href="/Products/ShowProduct/@item.id" class="card-link">View Details</a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="PBP">
+        <h2>Most Bought Products</h2>
+        <div class="latest-products-wrapper">
+
+            <div class="latest-products-container">
+                @foreach (var item in PBP)
+                {
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Name</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">@item.Description</h6>
+                            <p class="card-text">Price: @item.Price</p>
+                            <a href="/Products/ShowProduct/@item.id" class="card-link">View Details</a>
+                        </div>
+                    </div>
+                }
+            </div>
         </div>
     </div>
 
