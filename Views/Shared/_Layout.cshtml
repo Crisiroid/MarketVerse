@@ -12,31 +12,36 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @RenderSection("Styles", required: false)
     <style>
+            @RenderSection("Styles", required: false)
+
         body {
-            background-color: #4F709C;
+            background-color: #2f2fa2;
+        }
+        main {
+            background-color: #F5F5F5;
+            margin: 0px 10px 10px 10px;
+            padding: 20px;
         }
         .navbar {
-            background-color: #343a40; 
+            background-color: #343a40;
         }
 
         .navbar-brand {
-            color: #ffffff; 
+            color: #ffffff;
         }
 
         .navbar-nav .nav-link {
-            color: #ffffff; 
+            color: #ffffff;
         }
 
             .navbar-nav .nav-link:hover {
-                color: #f8f9fa; 
+                color: #f8f9fa;
             }
     </style>
 </head>
-    @Html.Partial("Navbar")
 <body>
-    <div class="container mt-4">
+    <div>
 
         @if (ViewBag.pm != null)
         {
@@ -45,6 +50,7 @@
                 @ViewBag.pm
             </div>
         }
+        @Html.Partial("Navbar")
         @RenderBody()
     </div>
 

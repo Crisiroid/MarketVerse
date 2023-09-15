@@ -3,8 +3,28 @@
     ViewBag.Title = "Home Page";
 }
 
-<main style="margin: 20px;">
-    <div class="slideshow rounded" style="padding: 10px; background-color: #64CCC5;">
+@section Styles{
+
+    .latest-products-wrapper {
+    max-width: 100%; /* Adjust the maximum width as needed */
+    overflow: hidden; /* Hide any content exceeding the maximum width */
+    }
+
+    .latest-products-container {
+    display: flex;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap; /* Prevent cards from wrapping to the next line */
+    padding: 10px; /* Add some spacing around the container */
+    }
+
+    .latest-products-container .card {
+    flex: 0 0 auto; /* Prevent cards from growing to fill the container */
+    margin-right: 10px; /* Add spacing between cards */
+    }
+}
+
+<main class="rounded shadow-sm">
+    <div class="slideshow rounded" style="padding: 10px; background-color: #DDE9F0; ">
 
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -35,15 +55,21 @@
     <br />
 
     <h2>Latest products</h2>
-    @foreach (var item in Model)
-    {
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">@item.Name</h5>
-                <h6 class="card-subtitle mb-2 text-muted">@item.Description</h6>
-                <p class="card-text">Price: @item.Price</p>
-                <a href="/Products/ShowProduct/@item.id" class="card-link">View Details</a>
-            </div>
+    <div class="latest-products-wrapper">
+
+        <div class="latest-products-container">
+            @foreach (var item in Model)
+            {
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Name</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">@item.Description</h6>
+                        <p class="card-text">Price: @item.Price</p>
+                        <a href="/Products/ShowProduct/@item.id" class="card-link">View Details</a>
+                    </div>
+                </div>
+            }
         </div>
-    }
+    </div>
+
 </main>
