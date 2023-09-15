@@ -39,19 +39,10 @@ namespace MarketVerse.Models
         {
             return DatabaseModel.db.Products.OrderByDescending(p => p.Views).Take(10).ToList();
         }
-        public static List<Product> sortByPurchase()
+        public static List<Product> SortByPurchase()
         {
             return DatabaseModel.db.Products.OrderByDescending(p => p.Purchuses).Take(10).ToList();
         }
-
-        //Editing methods
-        public static void IncreaseProductView(int id)
-        {
-            Product md = DatabaseModel.db.Products.FirstOrDefault(x => x.id == id);
-            md.Views++;
-            DatabaseModel.db.SaveChanges();
-        }
-
         public static ProductWithContent ShowProduct(int id)
         {
             Product product = FindProduct(id);
@@ -65,6 +56,23 @@ namespace MarketVerse.Models
                 content = content
             };
 
+        }
+
+        public static PFMP ShowProductForMainPage()
+        {
+            return new PFMP
+            {
+                Products = ShowAllProducts(), 
+                PBP = SortByPurchase(),
+                PBV = SortByViews()
+            };
+        }
+        //Editing methods
+        public static void IncreaseProductView(int id)
+        {
+            Product md = DatabaseModel.db.Products.FirstOrDefault(x => x.id == id);
+            md.Views++;
+            DatabaseModel.db.SaveChanges();
         }
 
         public static string Create(Product product)

@@ -11,7 +11,7 @@ namespace MarketVerse.Controllers
     {
         public ActionResult Index()
         {
-            return View(Product.ShowAllProducts());
+            return View(Product.ShowProductForMainPage());
         }
 
         public ActionResult About()
