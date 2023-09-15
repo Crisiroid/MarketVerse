@@ -21,6 +21,7 @@ namespace MarketVerse.Models
         [Required] public int Purchuses { get; set; }
         [Required] public int Views { get; set; } = 0;
 
+        //Finding Methods
         public static List<Product> ShowAllProducts()
         {
             return DatabaseModel.db.Products.ToList();
@@ -34,7 +35,16 @@ namespace MarketVerse.Models
         {
             return DatabaseModel.db.Products.FirstOrDefault(x => x.id == id);
         }
+        public static List<Product> SortByViews()
+        {
+            return DatabaseModel.db.Products.OrderByDescending(p => p.Views).Take(10).ToList();
+        }
+        public static List<Product> sortByPurchase()
+        {
+            return DatabaseModel.db.Products.OrderByDescending(p => p.Purchuses).Take(10).ToList();
+        }
 
+        //Editing methods
         public static void IncreaseProductView(int id)
         {
             Product md = DatabaseModel.db.Products.FirstOrDefault(x => x.id == id);
