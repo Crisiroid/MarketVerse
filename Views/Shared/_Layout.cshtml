@@ -73,5 +73,19 @@
             $('#myAlert').alert('close');
         }, 10000);
     </script>
+
+    <script>
+        function decreaseQuantity(productId) {
+            $.post("/ShoppingCart/DecreaseQuantity", { productId: productId }, function () {
+                location.reload();
+            });
+        }
+
+        function increaseQuantity(productId) {
+            $.post("/ShoppingCart/IncreaseQuantity", { productId: productId }, function () {
+                location.reload();
+            });
+        }
+    </script>
 </body>
 </html>

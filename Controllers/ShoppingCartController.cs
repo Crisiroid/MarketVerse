@@ -65,5 +65,36 @@ namespace MarketVerse.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public ActionResult DecreaseQuantity(int productId)
+        {
+            var cartItems = GetCartItems();
+            var itemToDecrease = cartItems.FirstOrDefault(item => item.ProductId == productId);
+
+            if (itemToDecrease != null && itemToDecrease.Quantity > 1)
+            {
+                itemToDecrease.Quantity--;
+            }
+
+            Session["CartItems"] = cartItems;
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult IncreaseQuantity(int productId)
+        {
+            var cartItems = GetCartItems();
+            var itemToIncrease = cartItems.FirstOrDefault(item => item.ProductId == productId);
+
+            if (itemToIncrease != null)
+            {
+                itemToIncrease.Quantity++;
+            }
+
+            Session["CartItems"] = cartItems;
+            return RedirectToAction("Index");
+        }
+
     }
 }

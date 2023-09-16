@@ -31,8 +31,12 @@
                         <tr>
                             <td>@item.ProductName</td>
                             <td>@item.Price.ToString("C")</td>
-                            <td>@item.Quantity</td>
-                            <td>@(item.Price * item.Quantity)</td>
+                            <td>
+                                <button class="btn btn-sm btn-info" onclick="decreaseQuantity(@item.ProductId)">-</button>
+                                @item.Quantity
+                                <button class="btn btn-sm btn-info" onclick="increaseQuantity(@item.ProductId)">+</button>
+                            </td>
+                            <td>@(item.Price * item.Quantity).ToString("C")</td>
                             <td>
                                 @Html.ActionLink("Remove", "RemoveFromCart", "ShoppingCart", new { productId = item.ProductId }, null)
                             </td>
@@ -41,6 +45,7 @@
                 </tbody>
             </table>
 
+
             <div class="text-right">
                 <h4>Total: @Model.Sum(item => item.Price * item.Quantity).ToString("C")</h4>
                 <a href="#" class="btn btn-success">Checkout</a>
@@ -48,3 +53,20 @@
         }
     </div>
 </main>
+
+@section scripts{
+    <script>
+        function decreaseQuantity(productId) {
+            $.post("/ShoppingCart/DecreaseQuantity", { productId: productId }, function () {
+                location.reload();
+            });
+        }
+
+        function increaseQuantity(productId) {
+            $.post("/ShoppingCart/IncreaseQuantity", { productId: productId }, function () {
+                location.reload();
+            });
+        }
+    </script>
+
+}
