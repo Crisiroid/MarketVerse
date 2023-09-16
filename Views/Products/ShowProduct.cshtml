@@ -11,12 +11,18 @@
                     @Model.product.Name
                 </div>
                 <div class="card-body">
-                    <!-- Move the product image here -->
-                    <img src="~/images/@Model.product.ImageFileName" alt="Product Image" class="img-fluid" />
-                    <h5 class="card-title">@Model.product.Name</h5>
-                    <p class="card-text">@Model.product.Description</p>
-                    <p class="card-text">@Model.product.Purchuses people have bought this product so far!</p>
-                    <a href="#" class="btn btn-success">Buy Now!</a>
+                    <form method="post" action="@Url.Action("AddToCart", "ShoppingCart")">
+                        @Html.Hidden("productId", Model.product.id)
+                        @Html.Hidden("productName", Model.product.Name)
+                        @Html.Hidden("price", Model.product.Price)
+                        @Html.Hidden("quantity", 1) <!-- Assuming initial quantity is 1 -->
+                        <!-- Move the product image here -->
+                        <img src="~/images/@Model.product.ImageFileName" alt="Product Image" class="img-fluid" />
+                        <h5 class="card-title">@Model.product.Name</h5>
+                        <p class="card-text">@Model.product.Description</p>
+                        <p class="card-text">@Model.product.Purchuses people have bought this product so far!</p>
+                        <button type="submit" class="btn btn-success">Buy Now!</button>
+                    </form>
                 </div>
             </div>
         </div>
