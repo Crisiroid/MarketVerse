@@ -19,7 +19,7 @@ namespace MarketVerse.Controllers
         {
             return View(cartItems);
         }
-
+        [HttpPost]
         public ActionResult AddToCart(int productId, string productName, decimal price, int quantity)
         {
             var existingItem = cartItems.FirstOrDefault(item => item.ProductId == productId);

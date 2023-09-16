@@ -70,9 +70,20 @@ namespace MarketVerse.Models
         //Editing methods
         public static void IncreaseProductView(int id)
         {
-            Product md = DatabaseModel.db.Products.FirstOrDefault(x => x.id == id);
-            md.Views++;
-            DatabaseModel.db.SaveChanges();
+            try
+            {
+                Product md = FindProduct(id);
+                if (md != null)
+                {
+                    md.Views++;
+                    DatabaseModel.db.SaveChanges();
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            
         }
 
         public static string Create(Product product)
