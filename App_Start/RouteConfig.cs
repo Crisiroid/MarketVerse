@@ -34,6 +34,11 @@ namespace MarketVerse
                 url: "AddContent/{id}",
                 defaults: new { controller = "Products", action = "AddContent" }
             );
+            routes.MapRoute(
+                name: "ShoppingCart",
+                url: "ShoppingCart/{action}/{id}",
+                defaults: new { controller = "ShoppingCart", action = "Index", id = UrlParameter.Optional }
+            );
         }
     }
 }
