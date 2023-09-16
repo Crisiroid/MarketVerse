@@ -10,11 +10,6 @@ namespace MarketVerse.Controllers
     public class ShoppingCartController : Controller
     {
         private List<CartItem> cartItems;
-
-        public ShoppingCartController()
-        {
-            cartItems = new List<CartItem>();
-        }
         public ActionResult Index()
         {
             return View(cartItems);

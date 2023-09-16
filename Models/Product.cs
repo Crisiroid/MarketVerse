@@ -92,6 +92,13 @@ namespace MarketVerse.Models
             {
                 product.Purchuses = 0;
                 product.Views = 0;
+                Post.Create(new Post
+                {
+                    Title = product.Name, 
+                    Text = product.Description, 
+                    ProductId = product.id
+                    
+                });
                 DatabaseModel.db.Products.Add(product);
                 DatabaseModel.db.SaveChanges();
                 return "true";
