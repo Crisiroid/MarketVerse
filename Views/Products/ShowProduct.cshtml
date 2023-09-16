@@ -12,10 +12,10 @@
                 </div>
                 <div class="card-body">
                     <form method="post" action="@Url.Action("AddToCart", "ShoppingCart")">
-                        @Html.Hidden("productId", Model.product.id)
-                        @Html.Hidden("productName", Model.product.Name)
-                        @Html.Hidden("price", Model.product.Price)
-                        @Html.Hidden("quantity", 1) <!-- Assuming initial quantity is 1 -->
+                        <input hidden="hidden" name="productId" value="@Model.product.id" />
+                        <input hidden="hidden" name="productName" value="@Model.product.Name" />
+                        <input hidden="hidden" name="price" value="@Model.product.Price" />
+                        <input hidden="hidden" name="quantity" value="1" />
                         <!-- Move the product image here -->
                         <img src="~/images/@Model.product.ImageFileName" alt="Product Image" class="img-fluid" />
                         <h5 class="card-title">@Model.product.Name</h5>
