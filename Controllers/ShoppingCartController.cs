@@ -106,5 +106,12 @@ namespace MarketVerse.Controllers
                 return View();
             }
         }
+        [HttpPost]
+        public ActionResult ProcessCart(string Providence, string City, string Address)
+        {
+            Customer u = Session["User"] as Customer;
+            Customer.AddAddress(u.id, Providence, City, Address);
+            return RedirectToAction("Payment");
+        }
     }
 }

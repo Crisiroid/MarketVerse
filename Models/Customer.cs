@@ -31,12 +31,12 @@ namespace MarketVerse.Models
         [Required] public string Operatingsystem { get; set; }
 
         [Required] public string Orders { get; set; }
+
+        //Finding Methods
         public static List<Customer> ShowAllUsers()
         {
             return DatabaseModel.db.Users.ToList();
         }
-
-        //Finding Methods
         public static Customer FindBuyer(int id)
         {
             return DatabaseModel.db.Users.Find(id);
@@ -59,6 +59,8 @@ namespace MarketVerse.Models
         {
             return DatabaseModel.db.Users.Any(x => x.Username == Username ||  x.Email == Email || x.Phonenumber == Phonenumber);
         }
+        //Changing Methods
+
         public static bool Create(Customer buyer)
         {
             try
@@ -72,7 +74,6 @@ namespace MarketVerse.Models
             }
         }
 
-        //Changind Methods
         public static bool Edit(Customer buyer)
         {
             try
@@ -100,6 +101,15 @@ namespace MarketVerse.Models
             {
                 return false;
             }
+        }
+
+        public static void AddAddress(int id, string Providence, string City, string Address)
+        {
+            Customer C = FindBuyer(id);
+            C.Providence = Providence;
+            C.Address = Address;
+            C.City = City;
+            DatabaseModel.db.SaveChanges();
         }
     }
 
