@@ -95,6 +95,16 @@ namespace MarketVerse.Controllers
             Session["CartItems"] = cartItems;
             return RedirectToAction("Index");
         }
-
+        public ActionResult ProcessCart()
+        {
+            if (Session["User"] == null)
+            {
+                return RedirectToAction("Login", "Users");
+            }
+            else
+            {
+                return View();
+            }
+        }
     }
 }
