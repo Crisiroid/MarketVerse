@@ -113,5 +113,8 @@ namespace MarketVerse.Controllers
             Customer.AddAddress(u.id, Providence, City, Address);
             return RedirectToAction("Payment");
         }
+        public ActionResult Payment() {
+            return View();
+        }
     }
 }
