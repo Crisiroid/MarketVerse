@@ -4,7 +4,25 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<main>
+<main style="margin: 40px 10px 10px 10px; padding: 20px;" class="rounded shadow">
+    <h1>Please Select Your Shipping Address</h1>
+    <form action="ProcessCart" method="post">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <label for="Providence">Providence:</label>
+                    <input type="text" name="Providence" class="form-control" />
+                </div>
+                <div class="col-6">
+                    <label for="Providence">City:</label>
+                    <input type="text" name="City" class="form-control" />
+                </div>
+            </div>
 
+            <label for="Address">Address: </label>
+            <textarea name="Address" class="form-control"></textarea>
+            <input type="submit" value="Process" style="margin-top: 10px;" class="btn btn-success" />
+        </div>
+    </form>
 </main>
 
