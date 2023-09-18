@@ -74,9 +74,20 @@ namespace MarketVerse.Models
 
         public static void IncreaseCount(int id)
         {
-            Category category = Category.FindCategory(id);
-            category.SubcategoryCount += 1;
-            DatabaseModel.db.SaveChanges();
+            try{
+                if(id != null)
+                {
+                    Category category = Category.FindCategory(id);
+                    category.SubcategoryCount += 1;
+                    DatabaseModel.db.SaveChanges();
+                }
+                
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            
         }
     }
 }

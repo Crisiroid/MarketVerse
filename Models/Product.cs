@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 
@@ -102,13 +103,20 @@ namespace MarketVerse.Models
                 DatabaseModel.db.Products.Add(product);
                 DatabaseModel.db.SaveChanges();
                 return "true";
-            }catch(Exception ex)
+            }catch(DbEntityValidationException ex)
             {
                 string errorMessage = ex.Message;
 
                 if (ex.InnerException != null)
                 {
                     errorMessage += " Inner Exception: " + ex.InnerException.Message;
+                }
+                foreach (var validationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        Console.WriteLine($"Property: {validationError.PropertyName}, Error: {validationError.ErrorMessage}");
+                    }
                 }
 
                 // Log or print the error message for debugging

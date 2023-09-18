@@ -125,7 +125,7 @@ namespace MarketVerse.Controllers
         }
         public ActionResult AddOrder(Customer User)
         {
-            string res = Order.CreatePendingOrder(User, GetCartItems());
+            string res = "Haha";//Order.CreatePendingOrder(User, GetCartItems());
             if (res.Equals("Confirmed"))
             {
                 TempData["pm"] = "Order Was Created. please Purchase for it using Order List";

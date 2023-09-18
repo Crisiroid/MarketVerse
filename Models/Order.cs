@@ -42,9 +42,9 @@ namespace MarketVerse.Models
                 DatabaseModel.db.Orders.Add(order);
                 return "Confirmed";
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-               return(ex.ToString() + ex.Message.ToString());
+                return (ex.ToString() + ex.Message.ToString());
 
             }
         }

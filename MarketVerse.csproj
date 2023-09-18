@@ -139,19 +139,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202309181640448_OrderUpdatee.cs" />
-    <Compile Include="Migrations\202309181640448_OrderUpdatee.designer.cs">
-      <DependentUpon>202309181640448_OrderUpdatee.cs</DependentUpon>
+    <Compile Include="Migrations\202309181716074_CreateDatabase.cs" />
+    <Compile Include="Migrations\202309181716074_CreateDatabase.designer.cs">
+      <DependentUpon>202309181716074_CreateDatabase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\HashTool.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Models\PFMP.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\DatabaseModel.cs" />
-    <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductWithContent.cs" />
     <Compile Include="Models\SubCategory.cs" />
@@ -274,8 +274,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202309181640448_OrderUpdatee.resx">
-      <DependentUpon>202309181640448_OrderUpdatee.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202309181716074_CreateDatabase.resx">
+      <DependentUpon>202309181716074_CreateDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
