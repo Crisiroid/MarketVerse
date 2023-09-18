@@ -165,6 +165,7 @@
     <Compile Include="Models\ProductWithContent.cs" />
     <Compile Include="Models\SubCategory.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\UserCartAndAddr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -254,6 +255,7 @@
     <Content Include="Views\Shared\Navbar.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\ShoppingCart\ProcessCart.cshtml" />
+    <Content Include="Views\ShoppingCart\Payment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

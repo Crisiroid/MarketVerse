@@ -1,0 +1,41 @@
+﻿@model MarketVerse.Models.UserCartAndAddr
+@{
+    ViewBag.Title = "Confirm Address And Pay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main style="margin: 40px 10px 10px 10px; padding: 20px;" class="rounded shadow">
+    <div style="background-color: lightgray;">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.CartItems)
+                {
+                    <tr>
+                        <td>@item.ProductName</td>
+                        <td>@item.Price.ToString("C")</td>
+                        <td>
+                            @item.Quantity
+                        </td>
+                        <td>@(item.Price * item.Quantity)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <h4>Total: @Model.CartItems.Sum(item => item.Price * item.Quantity).ToString("C")</h4>
+    </div>
+
+    <div style="border: 3px solid black;">
+        <p>Address: @Model.User.Providence - @Model.User.City - @Model.User.Address</p>
+        <p>Customer: @Model.User.Name @Model.User.Lastname</p>
+        <a class="btn btn-success">Pay now!</a>
+    </div>
+</main>
+
