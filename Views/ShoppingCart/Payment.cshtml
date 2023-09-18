@@ -35,7 +35,11 @@
     <div style="border: 3px solid black;">
         <p>Address: @Model.User.Providence - @Model.User.City - @Model.User.Address</p>
         <p>Customer: @Model.User.Name @Model.User.Lastname</p>
-        <a class="btn btn-success">Pay now!</a>
+        <form action="/ShoppingCart/AddOrder" method="post">
+            <input name="Username" hidden="hidden" value="@Model.User.Username" />
+            <input name="Id" hidden="hidden" value="@Model.User.id" />
+            <input type="submit" value="Pay Now!" class="btn btn-success">
+        </form>
     </div>
 </main>
 

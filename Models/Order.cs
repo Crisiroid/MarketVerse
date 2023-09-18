@@ -26,14 +26,14 @@ namespace MarketVerse.Models
         }
 
         //Updating Methods
-        public static string CreatePendingOrder(Customer User, List<CartItem> CartItems)
+        public static string CreatePendingOrder(String Username, int id, List<CartItem> CartItems)
         {
             try
             {
                 var order = new Order
                 {
-                    UserID = User.id,
-                    Username = User.Username,
+                    UserID = id,
+                    Username = Username,
                     OrderDate = DateTime.Now,
                     OrderStatus = "Pending",
                     TrackingID = "",
