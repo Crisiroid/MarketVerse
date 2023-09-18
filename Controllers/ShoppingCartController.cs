@@ -99,6 +99,8 @@ namespace MarketVerse.Controllers
         {
             if (Session["User"] == null)
             {
+                TempData["Addr"] = "ProcessCart";
+                TempData["Ctrl"] = "ShoppingCart";
                 return RedirectToAction("Login", "Users");
             }
             else

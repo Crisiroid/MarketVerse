@@ -147,11 +147,11 @@ namespace MarketVerse.Controllers
 
         public ActionResult Login()
         {
-            if (TempData["pm"] != null)
-            {
-                ViewBag.pm = TempData["pm"].ToString();
-            }
-            return View();
+                if (TempData["pm"] != null)
+                {
+                    ViewBag.pm = TempData["pm"].ToString();
+                }
+                return View();
         }
         [HttpPost]
         public ActionResult Login(string Username, string Password)
@@ -165,7 +165,15 @@ namespace MarketVerse.Controllers
             {
                 Session["User"] = Username;
                 TempData["pm"] = "Login Successful! Welcome.";
-                return RedirectToAction("Index", "Userpanel", new {Username = Session["User"].ToString() });
+                if (TempData["Addr"] != null)
+                {
+                    return RedirectToAction(TempData["Addr"].ToString(), TempData["Ctrl"].ToString());
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Userpanel", new { Username = Session["User"].ToString() });
+
+                }
             }
             else
             {
