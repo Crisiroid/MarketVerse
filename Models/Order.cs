@@ -26,7 +26,7 @@ namespace MarketVerse.Models
         }
 
         //Updating Methods
-        public string CreatePendingOrder(Customer User, List<CartItem> CartItems)
+        public static string CreatePendingOrder(Customer User, List<CartItem> CartItems)
         {
             try
             {

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using System.Web.Mvc;
 
@@ -122,9 +123,19 @@ namespace MarketVerse.Controllers
             };
             return View(ucad);
         }
-        public ActionResult AddOrder()
+        public ActionResult AddOrder(Customer User)
         {
-            return View();
+            string res = Order.CreatePendingOrder(User, GetCartItems());
+            if (res.Equals("Confirmed"))
+            {
+                TempData["pm"] = "Order Was Created. please Purchase for it using Order List";
+                return RedirectToAction("Index", "User");
+            }
+            else
+            {
+                TempData["pm"] = "Something went wrong" + res;
+                return RedirectToAction("Payment");
+            }
         }
     }
 }
