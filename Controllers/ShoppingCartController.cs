@@ -111,12 +111,16 @@ namespace MarketVerse.Controllers
         [HttpPost]
         public ActionResult ProcessCart(string Providence, string City, string Address)
         {
-            Customer u = Session["User"] as Customer;
+            Customer u = Customer.FindCustomerUsingUsername(Session["User"].ToString());
             Customer.AddAddress(u.id, Providence, City, Address);
-            return RedirectToAction("Payment");
+            return RedirectToAction("Payment", new {Userid = u.id});
         }
-        public ActionResult Payment() {
-            return View();
+        public ActionResult Payment(int Userid) {
+            UserCartAndAddr ucad = new UserCartAndAddr{
+                CartItems = GetCartItems(),
+                User = Customer.FindBuyer(Userid),
+            };
+            return View(ucad);
         }
     }
 }
