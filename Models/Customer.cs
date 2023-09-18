@@ -105,11 +105,21 @@ namespace MarketVerse.Models
 
         public static void AddAddress(int id, string Providence, string City, string Address)
         {
-            Customer C = FindBuyer(id);
-            C.Providence = Providence;
-            C.Address = Address;
-            C.City = City;
-            DatabaseModel.db.SaveChanges();
+            try
+            {
+                if(id != null && Providence != null && City != null && Address != null)
+                {
+                    Customer C = FindBuyer(id);
+                    C.Providence = Providence;
+                    C.Address = Address;
+                    C.City = City;
+                    DatabaseModel.db.SaveChanges();
+                }
+            }
+            catch(Exception ex )
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 
