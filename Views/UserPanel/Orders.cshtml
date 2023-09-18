@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_UserPanelLayout.cshtml";
 }
 
-<main>
+<main style="background-color: white; margin: 10px;" class="rounded">
     <table class="table table-striped table-bordered">
         <tr>
             <th>id</th>
@@ -20,10 +20,7 @@
                     <td>@item.OrderDate</td>
                     <td>@item.OrderStatus</td>
                     <td>
-                        @foreach (var product in item.Products)
-                        {
-                        @product.ProductName
-                        }
+                        @item.Products
                     </td>
                     <td>@item.TotalPrice</td>
                 </tr>

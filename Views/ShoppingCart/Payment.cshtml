@@ -38,6 +38,7 @@
         <form action="/ShoppingCart/AddOrder" method="post">
             <input name="Username" hidden="hidden" value="@Model.User.Username" />
             <input name="id" hidden="hidden" value="@Model.User.id" />
+            <input name="TotalCost" hidden="hidden" value="@Model.CartItems.Sum(item => item.Price * item.Quantity)" />
             <input type="submit" value="Pay Now!" class="btn btn-success">
         </form>
     </div>

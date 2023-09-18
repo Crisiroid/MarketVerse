@@ -77,7 +77,7 @@
                 </div>
             </div>
         </div>
-        <div>
+        <div class="col-9">
             @if (ViewBag.pm != null)
             {
                 <div id="myAlert" class="alert alert-danger alert-dismissible">
@@ -86,9 +86,8 @@
                 </div>
             }
             @RenderBody()
-            @Html.Partial("Footer");
-
         </div>
+        @Html.Partial("Footer");
 
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")

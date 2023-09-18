@@ -16,7 +16,7 @@ namespace MarketVerse.Controllers
         }
         public ActionResult Orders()
         {
-            return View(Order.ShowOrderByUsername(Session["User"].ToString()));
+            return View(Order.ShowOrderByUsername("Crisiroid"));
         }
         public ActionResult Logout()
         {

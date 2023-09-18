@@ -143,6 +143,10 @@
     <Compile Include="Migrations\202309181716074_CreateDatabase.designer.cs">
       <DependentUpon>202309181716074_CreateDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202309181907284_prupdate.cs" />
+    <Compile Include="Migrations\202309181907284_prupdate.designer.cs">
+      <DependentUpon>202309181907284_prupdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\CartItem.cs" />
@@ -278,6 +282,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202309181716074_CreateDatabase.resx">
       <DependentUpon>202309181716074_CreateDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309181907284_prupdate.resx">
+      <DependentUpon>202309181907284_prupdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

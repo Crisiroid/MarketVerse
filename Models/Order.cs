@@ -32,7 +32,7 @@ namespace MarketVerse.Models
         }
 
         //Updating Methods
-        public static string CreatePendingOrder(String Username, int id, List<CartItem> CartItems)
+        public static string CreatePendingOrder(String Username, int id, List<CartItem> CartItems,int totalPrice)
         {
             try
             {
@@ -44,6 +44,7 @@ namespace MarketVerse.Models
                     OrderStatus = "Pending",
                     TrackingID = "",
                     Products = CartItems,
+                    TotalPrice = totalPrice,
                 };
                 DatabaseModel.db.Orders.Add(order);
                 DatabaseModel.db.SaveChanges();

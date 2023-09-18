@@ -124,9 +124,9 @@ namespace MarketVerse.Controllers
             return View(ucad);
         }
         [HttpPost]
-        public ActionResult AddOrder(string Username, int id)
+        public ActionResult AddOrder(string Username, int id, int TotalCost)
         {
-            string res = Order.CreatePendingOrder(Username, id, GetCartItems());
+            string res = Order.CreatePendingOrder(Username, id, GetCartItems(), TotalCost);
             if (res.Equals("Confirmed"))
             {
                 TempData["pm"] = "Order Was Created. please Purchase for it using Order List";
