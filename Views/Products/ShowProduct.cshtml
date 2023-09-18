@@ -3,39 +3,105 @@
     ViewBag.Title = Model.product.Name;
 }
 
-<main>
-    <div class="row">
-        <div class="col-8">
-            <div class="card">
-                <div class="card-header">
-                    @Model.product.Name
-                </div>
-                <div class="card-body">
-                    <form method="post" action="@Url.Action("AddToCart", "ShoppingCart")">
-                        <input hidden="hidden" name="productId" value="@Model.product.id" />
-                        <input hidden="hidden" name="productName" value="@Model.product.Name" />
-                        <input hidden="hidden" name="price" value="@Model.product.Price" />
-                        <input hidden="hidden" name="quantity" value="1" />
-                        <!-- Move the product image here -->
-                        <img src="~/images/@Model.product.ImageFileName" alt="Product Image" class="img-fluid" />
-                        <h5 class="card-title">@Model.product.Name</h5>
-                        <p class="card-text">@Model.product.Description</p>
-                        <p class="card-text">@Model.product.Purchuses people have bought this product so far!</p>
-                        <button type="submit" class="btn btn-success">Buy Now!</button>
-                    </form>
-                </div>
-            </div>
-        </div>
+@section Styles{
+        /* Add CSS styles for margin and padding here */
+        .product-detail {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f8f8f8;
+        }
 
-        <div class="col-4">
-            <div class="card">
-                <div class="card-header bg-info">
-                    About this Product
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">@Model.content.Title</h5>
-                    <p class="card-text">@Html.Raw(Model.content.Text)</p>
-                </div>
+        .product-image {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .product-details {
+            flex: 2;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .product-info {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .info-label {
+            font-weight: bold;
+        }
+
+        .btn-buy-now {
+            background-color: #28a745; /* Green color, you can change this */
+            color: #fff;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .about-product-card {
+            margin-top: 20px;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .card-header {
+            background-color: #17a2b8; /* Blue color, you can change this */
+            color: #fff;
+            font-weight: bold;
+            padding: 10px;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+}
+
+<main>
+    <div class="product-detail">
+        <div class="product-image">
+            <img src="~/images/@Model.product.ImageFileName" alt="Product Image" class="img-fluid" />
+        </div>
+        <div class="product-details">
+            <h1>@Model.product.Name</h1>
+            <p class="description">@Model.product.Description</p>
+            <div class="product-info">
+                <p><span class="info-label">Price:</span> $@Model.product.Price</p>
+                <p><span class="info-label">Purchases:</span> @Model.product.Purchuses</p>
+            </div>
+            <form method="post" action="@Url.Action("AddToCart", "ShoppingCart")">
+                <input hidden="hidden" name="productId" value="@Model.product.id" />
+                <input hidden="hidden" name="productName" value="@Model.product.Name" />
+                <input hidden="hidden" name="price" value="@Model.product.Price" />
+                <input hidden="hidden" name="quantity" value="1" />
+                <button type="submit" class="btn btn-buy-now">Buy Now!</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="about-product-card">
+        <div class="card">
+            <div class="card-header bg-info">
+                About this Product
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@Model.content.Title</h5>
+                <p class="card-text">@Html.Raw(Model.content.Text)</p>
             </div>
         </div>
     </div>

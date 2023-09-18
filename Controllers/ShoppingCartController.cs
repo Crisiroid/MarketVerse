@@ -130,7 +130,7 @@ namespace MarketVerse.Controllers
             if (res.Equals("Confirmed"))
             {
                 TempData["pm"] = "Order Was Created. please Purchase for it using Order List";
-                return RedirectToAction("Index", "User");
+                return RedirectToAction("Index", "UserPanel");
             }
             else
             {

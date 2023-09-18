@@ -14,7 +14,10 @@ namespace MarketVerse.Controllers
             Customer user = Customer.FindCustomerUsingUsername(Username);
             return View(user);
         }
-
+        public ActionResult Orders()
+        {
+            return View(Order.ShowOrderByUsername(Session["User"].ToString()));
+        }
         public ActionResult Logout()
         {
             Session["User"] = null;

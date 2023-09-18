@@ -13,6 +13,7 @@ namespace MarketVerse.Models
         [Required] public string Username { get; set; }
         [Required] public DateTime OrderDate { get; set; }
         [Required] public string OrderStatus { get; set; }
+        [Required] public string Addr { get; set; }
         public string TrackingID { get; set; }
 
         //Products information
@@ -20,9 +21,14 @@ namespace MarketVerse.Models
         [Required] public int TotalPrice { get; set; }
 
         //Finding Methods
-        public List<Order> ShowAllOrders()
+        public static List<Order> ShowAllOrders()
         {
             return DatabaseModel.db.Orders.ToList();
+        }
+
+        public static List<Order> ShowOrderByUsername(string Username)
+        {
+            return DatabaseModel.db.Orders.Where(x => x.Username == Username).ToList();
         }
 
         //Updating Methods
@@ -40,6 +46,7 @@ namespace MarketVerse.Models
                     Products = CartItems,
                 };
                 DatabaseModel.db.Orders.Add(order);
+                DatabaseModel.db.SaveChanges();
                 return "Confirmed";
             }
             catch (Exception ex)

@@ -242,6 +242,8 @@
     <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\ShoppingCart\ProcessCart.cshtml" />
     <Content Include="Views\ShoppingCart\Payment.cshtml" />
+    <Content Include="Views\UserPanel\Orders.cshtml" />
+    <Content Include="Views\Shared\Footer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

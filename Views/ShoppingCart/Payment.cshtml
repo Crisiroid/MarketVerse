@@ -37,7 +37,7 @@
         <p>Customer: @Model.User.Name @Model.User.Lastname</p>
         <form action="/ShoppingCart/AddOrder" method="post">
             <input name="Username" hidden="hidden" value="@Model.User.Username" />
-            <input name="Id" hidden="hidden" value="@Model.User.id" />
+            <input name="id" hidden="hidden" value="@Model.User.id" />
             <input type="submit" value="Pay Now!" class="btn btn-success">
         </form>
     </div>
