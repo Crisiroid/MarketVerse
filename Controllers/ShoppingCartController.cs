@@ -122,9 +122,9 @@ namespace MarketVerse.Controllers
             };
             return View(ucad);
         }
-        public ActionResult AddOrder(int Userid)
+        public ActionResult AddOrder()
         {
-
+            return View();
         }
     }
 }

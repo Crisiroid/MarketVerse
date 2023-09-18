@@ -130,7 +130,6 @@
     <Compile Include="Controllers\AdminPanelController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\SubCategoriesController.cs" />
@@ -140,17 +139,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202309131618189_updateCategory.cs" />
-    <Compile Include="Migrations\202309131618189_updateCategory.designer.cs">
-      <DependentUpon>202309131618189_updateCategory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202309141515001_productUpdate.cs" />
-    <Compile Include="Migrations\202309141515001_productUpdate.designer.cs">
-      <DependentUpon>202309141515001_productUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202309141522370_productUpdate1.cs" />
-    <Compile Include="Migrations\202309141522370_productUpdate1.designer.cs">
-      <DependentUpon>202309141522370_productUpdate1.cs</DependentUpon>
+    <Compile Include="Migrations\202309181640448_OrderUpdatee.cs" />
+    <Compile Include="Migrations\202309181640448_OrderUpdatee.designer.cs">
+      <DependentUpon>202309181640448_OrderUpdatee.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
@@ -218,11 +209,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Orders\Create.cshtml" />
-    <Content Include="Views\Orders\Delete.cshtml" />
-    <Content Include="Views\Orders\Details.cshtml" />
-    <Content Include="Views\Orders\Edit.cshtml" />
-    <Content Include="Views\Orders\Index.cshtml" />
     <Content Include="Views\AdminPanel\Index.cshtml" />
     <Content Include="Views\SubCategories\Create.cshtml" />
     <Content Include="Views\SubCategories\Delete.cshtml" />
@@ -288,14 +274,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202309131618189_updateCategory.resx">
-      <DependentUpon>202309131618189_updateCategory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202309141515001_productUpdate.resx">
-      <DependentUpon>202309141515001_productUpdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202309141522370_productUpdate1.resx">
-      <DependentUpon>202309141522370_productUpdate1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202309181640448_OrderUpdatee.resx">
+      <DependentUpon>202309181640448_OrderUpdatee.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
