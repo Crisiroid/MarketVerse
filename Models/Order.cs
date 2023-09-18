@@ -10,13 +10,13 @@ namespace MarketVerse.Models
         [Key]
         public int id { get; set; }
         [Required] public int UserID { get; set; }
+        [Required] public string Username { get; set; }
         [Required] public DateTime OrderDate { get; set; }
         [Required] public string OrderStatus { get; set; }
         public string TrackingID { get; set; }
-        public Customer user { get; set; }
 
         //Products information
-        [Required] public List<Product> products { get; set; }
+        [Required] public List<Product> Products { get; set; }
         [Required] public int NormalPrice { get; set; }
         [Required] public int DiscountedPrice { get; set; }
         [Required] public int TotalPrice { get; set; }
