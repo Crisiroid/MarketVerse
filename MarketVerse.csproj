@@ -230,7 +230,7 @@
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
-    <Content Include="Views\Products\ViewProductsBasedOnSubCategory.cshtml" />
+    <Content Include="Views\Products\Category.cshtml" />
     <Content Include="Views\Products\ShowProduct.cshtml" />
     <Content Include="Views\Products\AddContent.cshtml" />
     <Content Include="Views\Shared\_AdminPanelLayout.cshtml" />

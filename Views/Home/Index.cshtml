@@ -25,70 +25,110 @@
     margin-right: 10px; /* Add spacing between cards */
     }
 
+    #infinite-carousel {
+    width: 80%; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the carousel */
+    }
+
+    .carousel-inner {
+    text-align: center; /* Center images horizontally */
+    }
+
+    .carousel-item img {
+    max-width: 100%;
+    height: auto; /* Responsive images */
+    }
+
+    /* Custom CSS for the carousel controls */
+    .carousel-controls {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    z-index: 1;
+    }
+
+    .carousel-controls a {
+    background-color: white;
+    border-radius: 50%;
+    width: 40px; /* Adjust the size as needed */
+    height: 40px; /* Adjust the size as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 20px; /* Adjust the size of the icon */
+    color: black;
+    transition: background-color 0.3s, color 0.3s;
+    }
+
+    .carousel-controls a:hover {
+    background-color: #333; /* Change background color on hover */
+    color: white; /* Change text color on hover */
+    }
+
+    .control-icon {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+    .carousel-container {
+    max-height: 300px; /* Limit the height of the carousel */
+    background-color: #f4f4f4; /* Mild background color */
+    overflow: hidden; /* Hide overflowing images */
+    width: 100%; /* Fill the width of the screen */
+    }
+
+    .carousel-inner {
+    max-height: 300px; /* Limit the height of the images */
+    text-align: center; /* Center images horizontally */
+    width: 100%; /* Fill the width of the screen */
+    }
+
+    .carousel-item img {
+    max-width: 100%;
+    max-height: 300px; /* Limit the image height */
+    width: 100%; /* Fill the width of the screen */
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+    display: block; /* Center the images vertically */
+    }
 }
 
 <main>
-    <!-- Carousel wrapper -->
-    <div id="carouselBasicExample" class="carousel slide carousel-fade" data-mdb-ride="carousel" style="max-height: 40vh;">
-        <!-- Indicators -->
-        <div class="carousel-indicators">
-            <button type="button"
-                    data-mdb-target="#carouselBasicExample"
-                    data-mdb-slide-to="0"
-                    class="active"
-                    aria-current="true"
-                    aria-label="Slide 1"></button>
-            <button type="button"
-                    data-mdb-target="#carouselBasicExample"
-                    data-mdb-slide-to="1"
-                    aria-label="Slide 2"></button>
-            <button type="button"
-                    data-mdb-target="#carouselBasicExample"
-                    data-mdb-slide-to="2"
-                    aria-label="Slide 3"></button>
-        </div>
-
-        <!-- Inner -->
-        <div class="carousel-inner" style="max-height: 40vh;">
-            <!-- Single item -->
-            <div class="carousel-item active">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(15).webp" class="d-block w-100" alt="Sunset Over the City" />
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>First slide label</h5>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+    <div class="carousel-container container-fluid">
+        <div id="infinite-carousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://imah.org.hk/wp-content/uploads/2016/05/sunrise-beach-clipart-wallpaper-1-1000x300.jpg" alt="Image 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://www.southdevonaonb.org.uk/wp-content/uploads/2020/01/15_Challaborough_1000x300px-1000x300.jpg" alt="Image 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://marmotamaps.com/en/blog/wp-content/uploads/9-hoechsten-berge-thumbnail-1000x300-1.jpg" alt="Image 3">
                 </div>
             </div>
-
-            <!-- Single item -->
-            <div class="carousel-item">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(22).webp" class="d-block w-100" alt="Canyon at Nigh" />
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Second slide label</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-            </div>
-
-            <!-- Single item -->
-            <div class="carousel-item">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(23).webp" class="d-block w-100" alt="Cliff Above a Stormy Sea" />
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Third slide label</h5>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                </div>
+            <div class="carousel-controls">
+                <a class="carousel-control-prev" href="#infinite-carousel" role="button" data-slide="prev">
+                    <div class="control-icon">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                </a>
+                <a class="carousel-control-next" href="#infinite-carousel" role="button" data-slide="next">
+                    <div class="control-icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </a>
             </div>
         </div>
-        <!-- Inner -->
-        <!-- Controls -->
-        <button class="carousel-control-prev" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
     </div>
-    <!-- Carousel wrapper -->
     <br />
     <div class="P">
         <h2>Latest products</h2>
