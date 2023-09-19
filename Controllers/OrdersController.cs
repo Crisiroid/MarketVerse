@@ -8,23 +8,36 @@ namespace MarketVerse.Controllers
 {
     public class OrdersController : Controller
     {
-        private MarketVerseContext db = new MarketVerseContext();
+        private void HandleCommonTasks()
+        {
+            //This method Checks the Privillages and the PM's TempData
+            if (Session["Admin"] == null)
+            {
+                HttpNotFound();
+            }
 
-        // GET: Orders
+            if (TempData["pm"] != null)
+            {
+                ViewBag.pm = TempData["pm"].ToString();
+                TempData.Clear();
+            }
+        }
         public ActionResult Index()
         {
-            if (Session["Admin"] == null) return RedirectToAction("Index", "Home");
+            //This Method is Used to Show All Orders
+            HandleCommonTasks();
             return View(Order.ShowAllOrders());
         }
 
-        // GET: Orders/Details/5
         public ActionResult Details(int? id)
         {
+            //This Method is Used to See Detils of an Order\
+            HandleCommonTasks();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = db.Orders.Find(id);
+            Order order = Order.FindOrder((int)id);
             if (order == null)
             {
                 return HttpNotFound();
@@ -32,37 +45,15 @@ namespace MarketVerse.Controllers
             return View(order);
         }
 
-        // GET: Orders/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Orders/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,UserID,Username,OrderDate,OrderStatus,Addr,TrackingID,TotalPrice")] Order order)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Orders.Add(order);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(order);
-        }
-
-        // GET: Orders/Edit/5
         public ActionResult Edit(int? id)
         {
+            //This Method is Used to Edit Orders
+            HandleCommonTasks();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = db.Orders.Find(id);
+            Order order = Order.FindOrder((int)id);
             if (order == null)
             {
                 return HttpNotFound();
@@ -70,30 +61,35 @@ namespace MarketVerse.Controllers
             return View(order);
         }
 
-        // POST: Orders/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,UserID,Username,OrderDate,OrderStatus,Addr,TrackingID,TotalPrice")] Order order)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(order).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                string res = Order.Edit(order);
+                if (res.Equals("Confirmed"))
+                {
+                    return RedirectToAction("Index");
+
+                }
+                else
+                {
+                    TempData["pm"] = res;
+                }
             }
             return View(order);
         }
 
-        // GET: Orders/Delete/5
         public ActionResult Delete(int? id)
         {
+            //This Method is Used to Delete an Order
+            HandleCommonTasks();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = db.Orders.Find(id);
+            Order order = Order.FindOrder((int)id);
             if (order == null)
             {
                 return HttpNotFound();
@@ -101,24 +97,20 @@ namespace MarketVerse.Controllers
             return View(order);
         }
 
-        // POST: Orders/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Order order = db.Orders.Find(id);
-            db.Orders.Remove(order);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
+            string res = Order.Delete(id);
+            if (res.Equals("Confirmed"))
             {
-                db.Dispose();
+                TempData["pm"] = "Order Deleted Successfully!";
             }
-            base.Dispose(disposing);
+            else
+            {
+                TempData["pm"] = res;
+            }
+            return RedirectToAction("Index");
         }
     }
 }

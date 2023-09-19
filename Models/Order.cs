@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Linq;
 
 namespace MarketVerse.Models
@@ -31,6 +32,11 @@ namespace MarketVerse.Models
             return DatabaseModel.db.Orders.Where(x => x.Username == Username).ToList();
         }
 
+        public static Order FindOrder(int id)
+        {
+           return DatabaseModel.db.Orders.Find(id);
+        }
+
         //Updating Methods
         public static string CreatePendingOrder(String Username, int id, List<CartItem> CartItems,int totalPrice)
         {
@@ -54,6 +60,36 @@ namespace MarketVerse.Models
             {
                 return (ex.ToString() + ex.Message.ToString());
 
+            }
+        }
+
+        public static string Edit(Order order)
+        {
+            try
+            {
+                DatabaseModel.db.Entry(order).State = EntityState.Modified;
+                DatabaseModel.db.SaveChanges();
+                return "Confirmed";
+
+            }
+            catch(Exception ex)
+            {
+                return ex.Message.ToString();
+            }
+        }
+
+        public static string Delete(int id)
+        {
+            try
+            {
+                Order order = FindOrder(id);
+                DatabaseModel.db.Orders.Remove(order);
+                DatabaseModel.db.SaveChanges();
+                return "Confirmed";
+            }
+            catch(Exception ex)
+            {
+                return ex.Message.ToString();
             }
         }
 
