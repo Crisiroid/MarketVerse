@@ -6,32 +6,49 @@ namespace MarketVerse.Controllers
 {
     public class SubCategoriesController : Controller
     {
+        private void HandleCommonTasks()
+        {
+            //This method Checks the Privillages and the PM's TempData
+            if (Session["Admin"] == null)
+            {
+                HttpNotFound();
+            }
+
+            if (TempData["pm"] != null)
+            {
+                ViewBag.pm = TempData["pm"].ToString();
+                TempData.Clear();
+            }
+        }
         public ActionResult Index()
         {
-            if (Session["Admin"] == null) return HttpNotFound();
+            //This Method is Used for Showing all SubCategories
+            HandleCommonTasks();
             return View(SubCategory.ShowAllSubCategories());
         }
 
         public ActionResult Details(int? id)
         {
-            if (Session["Admin"] == null) return HttpNotFound();
+            //This Method is Used for Checking SubCategory Details
+            HandleCommonTasks();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SubCategory subCategory = SubCategory.FindSubCategory((int)id);
+            SubCategory SubCategory = SubCategory.FindSubCategory((int)id);
 
 
-            if (subCategory == null)
+            if (SubCategory == null)
             {
                 return HttpNotFound();
             }
-            return View(subCategory);
+            return View(SubCategory);
         }
 
         public ActionResult Create()
         {
-            if (Session["Admin"] == null) return HttpNotFound();
+            //This Method is Used for creating a new SubCategory
+            HandleCommonTasks();
             return View();
         }
 
@@ -39,7 +56,6 @@ namespace MarketVerse.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(SubCategory subCategory)
         {
-
             if (SubCategory.Create(subCategory))
             {
                 Category.IncreaseCount(subCategory.Code);
@@ -54,7 +70,8 @@ namespace MarketVerse.Controllers
         }
         public ActionResult Edit(int? id)
         {
-            if (Session["Admin"] == null) return HttpNotFound();
+            //This Method is Used for Editing a SubCategory
+            HandleCommonTasks();
 
             if (id == null)
             {
@@ -85,8 +102,8 @@ namespace MarketVerse.Controllers
 
         public ActionResult Delete(int? id)
         {
-            if (Session["Admin"] == null) return HttpNotFound();
-
+            //This Method is Used for Deleting a SubCategory
+            HandleCommonTasks();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
