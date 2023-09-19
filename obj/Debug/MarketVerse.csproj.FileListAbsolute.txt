@@ -85,3 +85,4 @@ C:\Users\Administrator\source\repos\MarketVerse\MarketVerse\obj\Debug\MarketVers
 C:\Users\Administrator\source\repos\MarketVerse\MarketVerse\obj\Debug\MarketVerse.csproj.GenerateResource.cache
 C:\Users\Administrator\source\repos\MarketVerse\MarketVerse\obj\Debug\MarketVerse.Migrations.prupdate.resources
 C:\Users\Administrator\source\repos\MarketVerse\MarketVerse\obj\Debug\MarketVerse.Migrations.AddSam.resources
+C:\Users\Administrator\source\repos\MarketVerse\MarketVerse\obj\Debug\MarketVerse.Migrations.AddSams.resources

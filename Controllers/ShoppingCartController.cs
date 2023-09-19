@@ -1,4 +1,5 @@
 ﻿using MarketVerse.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -126,7 +127,23 @@ namespace MarketVerse.Controllers
             string res = Order.CreatePendingOrder(Username, id, GetCartItems(), TotalCost);
             if (res.Equals("Confirmed"))
             {
-                TempData["pm"] = "Order Was Created. please Purchase for it using Order List";
+                if (SAM.FindMonth(DateTime.Now) != null)
+                {
+                    string s = SAM.IncreaseSale(TotalCost);
+                    if (s.Equals("Confirmed"))
+                    {
+                        TempData["pm"] = "Order Was Created. please Purchase for it using Order List";
+                    }
+                }
+                else
+                {
+                    SAM.CreateMonth();
+                    string s = SAM.IncreaseSale(TotalCost);
+                    if (s.Equals("Confirmed"))
+                    {
+                        TempData["pm"] = "Order Was Created. please Purchase for it using Order List";
+                    }
+                }
                 return RedirectToAction("Index", "UserPanel");
             }
             else
