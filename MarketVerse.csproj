@@ -148,6 +148,10 @@
     <Compile Include="Migrations\202309181907284_prupdate.designer.cs">
       <DependentUpon>202309181907284_prupdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202309191702024_AddSam.cs" />
+    <Compile Include="Migrations\202309191702024_AddSam.designer.cs">
+      <DependentUpon>202309191702024_AddSam.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\CartItem.cs" />
@@ -159,6 +163,7 @@
     <Compile Include="Models\DatabaseModel.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductWithContent.cs" />
+    <Compile Include="Models\SAM.cs" />
     <Compile Include="Models\SubCategory.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\UserCartAndAddr.cs" />
@@ -291,6 +296,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202309181907284_prupdate.resx">
       <DependentUpon>202309181907284_prupdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309191702024_AddSam.resx">
+      <DependentUpon>202309191702024_AddSam.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
