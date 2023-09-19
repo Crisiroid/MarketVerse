@@ -1,34 +1,36 @@
 ﻿using MarketVerse.Models;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MarketVerse.Controllers
 {
     public class UsersController : Controller
     {
-        public ActionResult Index()
+        private void HandleCommonTasks()
         {
-            if (Session["Admin"] == null) return HttpNotFound();
+            //This method Checks the Privillages and the PM's TempData
+            if (Session["Admin"] == null)
+            {
+                HttpNotFound();
+            }
+
             if (TempData["pm"] != null)
             {
                 ViewBag.pm = TempData["pm"].ToString();
                 TempData.Clear();
             }
+        }
+        public ActionResult Index()
+        {
+            //This index Method is showing all the Users
+            HandleCommonTasks();
             return View(Customer.ShowAllUsers());
         }
 
         public ActionResult Details(int? id)
         {
-            if (Session["Admin"] == null) return HttpNotFound();
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            //This Method is used to check a User's details
+            HandleCommonTasks();
             Customer user = Customer.FindBuyer((int)id);
             if (user == null)
             {
@@ -39,6 +41,7 @@ namespace MarketVerse.Controllers
 
         public ActionResult Register()
         {
+            //This Method is for User Registration
             if (TempData["pm"] != null)
             {
                 ViewBag.pm = TempData["pm"].ToString();
@@ -82,6 +85,7 @@ namespace MarketVerse.Controllers
 
         public ActionResult Edit(int? id)
         {
+            //This Method is for Editing User's details
             if (TempData["pm"] != null)
             {
                 ViewBag.pm = TempData["pm"].ToString();
@@ -117,11 +121,8 @@ namespace MarketVerse.Controllers
 
         public ActionResult Delete(int? id)
         {
-            if (Session["Admin"] == null) return HttpNotFound();
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            //This Method is for Deleting the User
+            HandleCommonTasks();
             Customer user = Customer.FindBuyer((int)id);
             if (user == null)
             {
@@ -133,20 +134,13 @@ namespace MarketVerse.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            if (Session["Admin"] == null) return HttpNotFound();
-            if(Customer.Delete(id))
-            {
-                TempData["pm"] = "User Deleted";
-            }
-            else
-            {
-                TempData["pm"] = "Something went wrong;";
-            }
+            HandleCommonTasks();
             return RedirectToAction("Index");
         }
 
         public ActionResult Login()
         {
+            //This Method is user for User Login
                 if (TempData["pm"] != null)
                 {
                     ViewBag.pm = TempData["pm"].ToString();
@@ -184,6 +178,7 @@ namespace MarketVerse.Controllers
 
         public JsonResult CheckUsernameAvailability(string username)
         {
+            //This Method is used to see if Username is available or not
             bool isAvailable = Customer.CheckUsernameAvailability(username);
 
 
