@@ -1,28 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
+﻿using System.Net;
 using System.Web.Mvc;
-using MarketVerse.Data;
 using MarketVerse.Models;
 
 namespace MarketVerse.Controllers
 {
     public class CategoriesController : Controller
     {
+        private void HandleCommonTasks()
+        {
+            //This method Checks the Privillages and the PM's TempData
+            if (Session["Admin"] == null)
+            {
+                HttpNotFound();
+            }
+
+            if (TempData["pm"] != null)
+            {
+                ViewBag.pm = TempData["pm"].ToString();
+                TempData.Clear();
+            }
+        }
         public ActionResult Index()
         {
-            if (Session["Admin"] == null) return HttpNotFound();
-
+            //This Method is Used to Show all Categories
+            HandleCommonTasks();
             return View(Category.ShowAllCategories());
         }
         public ActionResult Details(int? id)
         {
-            if (Session["Admin"] == null) return HttpNotFound();
-
+            //This Method is Used to See the Detail of a Category
+            HandleCommonTasks();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -37,8 +44,8 @@ namespace MarketVerse.Controllers
 
         public ActionResult Create()
         {
-            if (Session["Admin"] == null) return HttpNotFound();
-
+            //This Method is Used to Create a Category
+            HandleCommonTasks();
             return View();
         }
 
@@ -46,8 +53,7 @@ namespace MarketVerse.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,Name,SubcategoryCount")] Category category)
         {
-            if (Session["Admin"] == null) return HttpNotFound();
-
+            HandleCommonTasks();
             if (Category.Create(category))
             {
                 return RedirectToAction("Index", "Categories");
@@ -62,8 +68,8 @@ namespace MarketVerse.Controllers
 
         public ActionResult Edit(int? id)
         {
-            if (Session["Admin"] == null) return HttpNotFound();
-
+            //This Method is Used to Edit a Category
+            HandleCommonTasks();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -80,8 +86,7 @@ namespace MarketVerse.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,Name,SubcategoryCount")] Category category)
         {
-            if (Session["Admin"] == null) return HttpNotFound();
-
+            HandleCommonTasks();
             if (Category.Edit(category))
             {
                 return RedirectToAction("Index", "Categories");
@@ -95,8 +100,8 @@ namespace MarketVerse.Controllers
 
         public ActionResult Delete(int? id)
         {
-            if (Session["Admin"] == null) return HttpNotFound();
-
+            //This Method is Used to Delete a Category
+            HandleCommonTasks();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -114,8 +119,7 @@ namespace MarketVerse.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            if (Session["Admin"] == null) return HttpNotFound();
-
+            HandleCommonTasks();
             if (Category.Delete((int)id))
             {
                 return RedirectToAction("Index", "Categories");
