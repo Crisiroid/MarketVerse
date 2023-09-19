@@ -9,27 +9,31 @@ namespace MarketVerse.Controllers
 {
     public class ProductsController : Controller
     {
-        public ActionResult Index()
+        private void HandleCommonTasks()
         {
-            if (Session["Admin"] == null) return HttpNotFound();
-            if (TempData["pm"]!= null)
+            //This method Checks the Privillages and the PM's TempData
+            if (Session["Admin"] == null)
             {
-                ViewBag.pm = TempData["pm"].ToString();
-                TempData.Clear();
+                HttpNotFound();
             }
-            return View(Product.ShowAllProducts());
-        }
-
-        public ActionResult Details(int? id)
-        {
-            if (Session["Admin"] == null) return HttpNotFound();
 
             if (TempData["pm"] != null)
             {
                 ViewBag.pm = TempData["pm"].ToString();
                 TempData.Clear();
             }
+        }
+        public ActionResult Index()
+        {
+            //This Method is Used for Showing All Products
+            HandleCommonTasks();
+            return View(Product.ShowAllProducts());
+        }
 
+        public ActionResult Details(int? id)
+        {
+            //This Method is Used for Returning the Details of a Product
+            HandleCommonTasks();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -44,14 +48,8 @@ namespace MarketVerse.Controllers
 
         public ActionResult Create()
         {
-            if (Session["Admin"] == null) return HttpNotFound();
-
-            if (TempData["pm"] != null)
-            {
-                ViewBag.pm = TempData["pm"].ToString();
-                TempData.Clear();
-            }
-
+            //This Method is Used for Creating a new Product
+            HandleCommonTasks();
             return View();
         }
 
@@ -97,14 +95,8 @@ namespace MarketVerse.Controllers
 
         public ActionResult Edit(int? id)
         {
-            if (Session["Admin"] == null) return HttpNotFound();
-
-            if (TempData["pm"] != null)
-            {
-                ViewBag.pm = TempData["pm"].ToString();
-                TempData.Clear();
-            }
-
+            //This Method is Used for Editing a Product
+            HandleCommonTasks();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -136,14 +128,8 @@ namespace MarketVerse.Controllers
 
         public ActionResult Delete(int? id)
         {
-            if (Session["Admin"] == null) return HttpNotFound();
-
-            if (TempData["pm"] != null)
-            {
-                ViewBag.pm = TempData["pm"].ToString();
-                TempData.Clear();
-            }
-
+            //This Method is Used to Delete a Product
+            HandleCommonTasks();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -171,18 +157,21 @@ namespace MarketVerse.Controllers
             return RedirectToAction("Index", "Products");
 
         }
-        public ActionResult ViewProductsBasedOnSubCategory(int id)
+        public ActionResult Category(int id)
         {
+            //This Method is Used to Show Products Filtered by their Category
             return View(Product.ShowAllProductsSortByCatergory(id));
         }
 
         public ActionResult ShowProduct(int id)
         {
+            //This Method is Used to Show a product
             return View(Product.ShowProduct(id));
         }
 
         public ActionResult AddContent(int id)
         {
+            //This Method is Used to Add a new Content for Product
             if (Session["Admin"] == null) return HttpNotFound();
             TempData["id"] = id;
             return View();
