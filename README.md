@@ -43,4 +43,5 @@ Make your changes and submit a pull request.
 
 ## Modifying the Project
 In order to change the Main Page Items and Add Different Products, you can Modify Models/PFMP.cs. 
-
+<br/> 
+Category's id is SubCategory's code. For example when you create a Category Called Electronics and its id is "1", you need to add 1 in the Code field to create SubCategory Based on that.
