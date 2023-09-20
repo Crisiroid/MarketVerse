@@ -47,3 +47,6 @@ In order to change the Main Page Items and Add Different Products, you can Modif
 Category's id is SubCategory's code. For example when you create a Category Called Electronics and its id is "1", you need to add 1 in the Code field to create SubCategory Based on that.
 <br/>
 After Creating a product, Open the Content Section and Create a new Content for it to prevent bugs.
+## Pictures
+**Main Page**
+![image](https://github.com/Crisiroid/MarketVerse/assets/85690802/a7d46c08-7dff-4625-a8cc-3b10ddcddee3)
