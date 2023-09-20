@@ -41,6 +41,6 @@ Fork the repository.
 Create a new branch for your feature or bugfix.
 Make your changes and submit a pull request.
 
-## Modifying the Prodjct
+## Modifying the Project
 In order to change the Main Page Items and Add Different Products, you can Modify Models/PFMP.cs. 
 
