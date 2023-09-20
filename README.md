@@ -32,10 +32,13 @@ Follow these steps to get your MarketVerse project up and running on your local 
   dotnet run
 5. **Access the Application**:
 Open your web browser and navigate to http://localhost:port.
-
+6. **Creating Administrator Account**:
+Open SqlServer and Create a new Admin Account. 
 Contributing
 We welcome contributions from the community. To contribute to MarketVerse, please follow these guidelines:
 
+## Modifying the Prodjct
+In order to change the Main Page Items and Add Different Products, you can Modify Models/PFMP.cs
 Fork the repository.
 Create a new branch for your feature or bugfix.
 Make your changes and submit a pull request.
