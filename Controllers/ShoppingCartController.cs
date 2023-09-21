@@ -28,6 +28,10 @@ namespace MarketVerse.Controllers
         [HttpPost]
         public ActionResult AddToCart(int productId, string productName, decimal price, int quantity)
         {
+            if(quantity <= 0)
+            {
+                return RedirectToAction("ShowProduct", "Products", new { id = productId });
+            }
             var cartItems = GetCartItems();
 
             var existingItem = cartItems.FirstOrDefault(item => item.ProductId == productId);
