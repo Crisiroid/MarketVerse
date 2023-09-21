@@ -127,6 +127,12 @@ namespace MarketVerse.Controllers
             string res = Order.CreatePendingOrder(Username, id, GetCartItems(), TotalCost);
             if (res.Equals("Confirmed"))
             {
+                var cartItems = GetCartItems();
+                foreach(var item in cartItems)
+                {
+                    string addres = Product.DecreaseQuantity(item.Id);
+                    Console.WriteLine(addres);
+                }
                 if (SAM.FindMonth(DateTime.Now) != null)
                 {
                     string s = SAM.IncreaseSale(TotalCost);

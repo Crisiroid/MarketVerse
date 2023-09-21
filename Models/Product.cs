@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Web;
 
 namespace MarketVerse.Models
@@ -151,6 +152,23 @@ namespace MarketVerse.Models
             catch(Exception ex)
             {
                 return false;
+            }
+            
+        }
+
+        public static string DecreaseQuantity(int id)
+        {
+            try
+            {
+                if (id == null) return "404";
+                Product p = FindProduct(id);
+                p.Quantity -= 1;
+                DatabaseModel.db.SaveChanges();
+                return "Confirmed";
+            }
+            catch(Exception e)
+            {
+                return e.Message;
             }
             
         }
