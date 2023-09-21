@@ -84,13 +84,23 @@
                 <p><span class="info-label">Price:</span> $@Model.product.Price</p>
                 <p><span class="info-label">Purchases:</span> @Model.product.Purchuses</p>
             </div>
-            <form method="post" action="@Url.Action("AddToCart", "ShoppingCart")">
-                <input hidden="hidden" name="productId" value="@Model.product.id" />
-                <input hidden="hidden" name="productName" value="@Model.product.Name" />
-                <input hidden="hidden" name="price" value="@Model.product.Price" />
-                <input hidden="hidden" name="quantity" value="1" />
-                <button type="submit" class="btn btn-buy-now">Buy Now!</button>
-            </form>
+            @if (Model.product.Quantity <= 0)
+            {
+
+
+                <p class="text-danger fw-bold">This product isn't available now!'</p>
+            }
+            else
+            {
+                <form method="post" action="@Url.Action("AddToCart", "ShoppingCart")">
+                    <input hidden="hidden" name="productId" value="@Model.product.id" />
+                    <input hidden="hidden" name="productName" value="@Model.product.Name" />
+                    <input hidden="hidden" name="price" value="@Model.product.Price" />
+                    <input hidden="hidden" name="quantity" value="1" />
+                    <button type="submit" class="btn btn-buy-now">Buy Now!</button>
+                </form>
+            }
+
         </div>
     </div>
 
