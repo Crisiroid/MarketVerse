@@ -30,28 +30,33 @@ namespace MarketVerse.Controllers
         {
             if(quantity <= 0)
             {
-                return RedirectToAction("ShowProduct", "Products", new { id = productId });
-            }
-            var cartItems = GetCartItems();
-
-            var existingItem = cartItems.FirstOrDefault(item => item.ProductId == productId);
-
-            if (existingItem != null)
-            {
-                existingItem.Quantity += quantity;
+                TempData["pm"] = "This Product isn't Available";
+                return Redirect(Request.UrlReferrer.ToString());
             }
             else
             {
-                cartItems.Add(new CartItem
+                var cartItems = GetCartItems();
+
+                var existingItem = cartItems.FirstOrDefault(item => item.ProductId == productId);
+
+                if (existingItem != null)
                 {
-                    ProductId = productId,
-                    ProductName = productName,
-                    Price = price,
-                    Quantity = quantity
-                });
+                    existingItem.Quantity += quantity;
+                }
+                else
+                {
+                    cartItems.Add(new CartItem
+                    {
+                        ProductId = productId,
+                        ProductName = productName,
+                        Price = price,
+                        Quantity = quantity
+                    });
+                }
+                Session["CartItems"] = cartItems;
+                return RedirectToAction("Index");
             }
-            Session["CartItems"] = cartItems;
-            return RedirectToAction("Index");
+            
         }
 
         public ActionResult RemoveFromCart(int productId)
