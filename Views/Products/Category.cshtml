@@ -3,7 +3,7 @@
     ViewBag.Title = "MarketVerse - Product List";
 }
 
-<main style="margin: 20px;">
+<main style="margin: 20px; padding: 20px;" class="rounded shadow">
     <h2>Product List</h2>
 
     <div class="row">
@@ -12,6 +12,7 @@
             <div class="col-md-4 mb-4">
                 <div class="card">
                     <div class="card-body">
+                        <img class="card-img-top" src="/images/@item.ImageFileName" width="180" alt="Card image cap">
                         <h5 class="card-title">@item.Name</h5>
                         <h6 class="card-subtitle mb-2 text-muted">@item.Description</h6>
                         <p class="card-text">Price: @item.Price</p>
