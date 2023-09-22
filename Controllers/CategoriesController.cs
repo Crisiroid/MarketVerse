@@ -87,7 +87,8 @@ namespace MarketVerse.Controllers
         public ActionResult Edit([Bind(Include = "id,Name,SubcategoryCount")] Category category)
         {
             HandleCommonTasks();
-            if (Category.Edit(category))
+            string res = Category.Edit(category);
+            if (res == "200")
             {
                 return RedirectToAction("Index", "Categories");
             }
