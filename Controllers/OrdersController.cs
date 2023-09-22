@@ -68,7 +68,7 @@ namespace MarketVerse.Controllers
             if (ModelState.IsValid)
             {
                 string res = Order.Edit(order);
-                if (res.Equals("Confirmed"))
+                if (res.Equals("200"))
                 {
                     return RedirectToAction("Index");
 

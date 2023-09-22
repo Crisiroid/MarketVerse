@@ -67,9 +67,10 @@ namespace MarketVerse.Models
         {
             try
             {
-                DatabaseModel.db.Entry(order).State = EntityState.Modified;
+                Order o = FindOrder(order.id);
+                o = order;
                 DatabaseModel.db.SaveChanges();
-                return "Confirmed";
+                return "200";
 
             }
             catch(Exception ex)
