@@ -117,12 +117,12 @@ namespace MarketVerse.Controllers
             if (res == "200")
             {
                 TempData["pm"] = "Product Updated Successfully!";
-                return RedirectToAction("Index", "Product");
+                return RedirectToAction("Index", "Products");
             }
             else
             {
                 TempData["pm"] = res;
-                return RedirectToAction("Index", "Product");
+                return RedirectToAction("Index", "Products");
             }
         }
 

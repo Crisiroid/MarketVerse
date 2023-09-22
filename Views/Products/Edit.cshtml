@@ -8,8 +8,7 @@
 
 <main>
     <h2> Edit Product </h2>
-    @using (Html.BeginForm())
-    {
+    <form method="post" action="/Products/edit">
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
@@ -81,5 +80,5 @@
                 </div>
             </div>
         </div>
-    }
+    </form>
 </main>

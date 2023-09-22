@@ -133,9 +133,20 @@ namespace MarketVerse.Models
             {
                 if(product != null)
                 {
-                    DatabaseModel.db.Entry(product).State = EntityState.Modified;
+                    Product p =  FindProduct(product.id);
+                    p.Name = product.Name;
+                    p.SubCategoryid = product.SubCategoryid;
+                    p.Description = product.Description;
+                    p.Price = product.Price;
+                    p.Quantity = product.Quantity;
+                    p.Purchuses = product.Purchuses; 
+                    p.Views = product.Views; 
                     DatabaseModel.db.SaveChanges();
                     return "200";
+                }
+                else
+                {
+                    return "error";
                 }
                 
             }catch(Exception ex)
