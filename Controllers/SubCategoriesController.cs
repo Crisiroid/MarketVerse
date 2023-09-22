@@ -89,13 +89,14 @@ namespace MarketVerse.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,Name,ItemCount,Code")] SubCategory subCategory)
         {
-            if (SubCategory.Edit(subCategory))
+            string res = SubCategory.Edit(subCategory);
+            if (res == "200")
             {
                 return RedirectToAction("Index");
             }
             else
             {
-                TempData["pm"] = "Something went wrong";
+                TempData["pm"] = res;
                 return RedirectToAction("Index", "SubCategories");
             }
         }

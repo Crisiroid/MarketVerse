@@ -39,18 +39,21 @@ namespace MarketVerse.Models
             
         }
 
-        public static bool Edit(SubCategory category)
+        public static string Edit(SubCategory category)
         {
             try
             {
-                DatabaseModel.db.Entry(category).State = EntityState.Modified;
+                SubCategory s = FindSubCategory(category.id);
+                s.Name = category.Name;
+                s.ItemCount = category.ItemCount;
+                s.Code = category.Code; 
                 DatabaseModel.db.SaveChanges();
-                return true;
+                return "200";
 
             }
             catch(Exception ex)
             {
-                return false;
+                return ex.Message;
             }
         }
 

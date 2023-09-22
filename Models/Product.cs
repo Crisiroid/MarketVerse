@@ -98,9 +98,10 @@ namespace MarketVerse.Models
                 {
                     Title = product.Name, 
                     Text = product.Description, 
-                    ProductId = product.id
-                    
+                    ProductId = product.id, 
+                                      
                 });
+                SubCategory.IncreaseProductNumbers(product.SubCategoryid);
                 DatabaseModel.db.Products.Add(product);
                 DatabaseModel.db.SaveChanges();
                 return "true";
