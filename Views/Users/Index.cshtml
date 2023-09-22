@@ -9,17 +9,17 @@
 
     <style>
         .table-wrapper {
-            max-width: 100%; /* Adjust the maximum width as needed */
+            max-width: 100%; 
             overflow-x: auto;
         }
 
         .table {
-            width: 100%; /* Set the table width to 100% */
+            width: 100%; 
         }
 
             .table th,
             .table td {
-                max-width: 200px; /* Adjust the maximum column width as needed */
+                max-width: 200px; 
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
@@ -44,8 +44,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Email)
             </th>
-            <!-- Add th elements for other columns as needed -->
-            <th></th>
+            <th>Actions</th>
         </tr>
 
         @foreach (var item in Model)
@@ -60,7 +59,6 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Email)
                 </td>
-                <!-- Add td elements for other columns as needed -->
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
                     @Html.ActionLink("Details", "Details", new { id = item.id }) |
@@ -69,4 +67,6 @@
             </tr>
         }
     </table>
+
+    <a class="btn btn-info" href="/AdminPanel">Back to Control Panel</a>
 </div>

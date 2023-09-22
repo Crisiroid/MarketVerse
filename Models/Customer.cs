@@ -73,18 +73,19 @@ namespace MarketVerse.Models
             }
         }
 
-        public static bool Edit(Customer buyer)
+        public static string Edit(Customer buyer)
         {
             try
             {
-                DatabaseModel.db.Entry(buyer).State = EntityState.Modified;
+                Customer c = FindBuyer(buyer.id);
+                c = buyer; 
                 DatabaseModel.db.SaveChanges();
-                return true;
+                return "200";
 
             }
             catch ( Exception ex )
             {
-                return false;
+                return ex.Message;
             }
         }
 
