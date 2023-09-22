@@ -113,15 +113,15 @@ namespace MarketVerse.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Product product)
         {
-
-            if (Product.Edit(product))
+            string res = Product.Edit(product);
+            if (res == "200")
             {
                 TempData["pm"] = "Product Updated Successfully!";
                 return RedirectToAction("Index", "Product");
             }
             else
             {
-                TempData["pm"] = "Something went wrong";
+                TempData["pm"] = res;
                 return RedirectToAction("Index", "Product");
             }
         }

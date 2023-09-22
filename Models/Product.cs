@@ -127,16 +127,20 @@ namespace MarketVerse.Models
             }
         }
 
-        public static bool Edit(Product product)
+        public static string Edit(Product product)
         {
             try
             {
-                DatabaseModel.db.Entry(product).State = EntityState.Modified;
-                DatabaseModel.db.SaveChanges();
-                return true;
+                if(product != null)
+                {
+                    DatabaseModel.db.Entry(product).State = EntityState.Modified;
+                    DatabaseModel.db.SaveChanges();
+                    return "200";
+                }
+                
             }catch(Exception ex)
             {
-                return false;
+                return ex.Message;
             }
         }
 
