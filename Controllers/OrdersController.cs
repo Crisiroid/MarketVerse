@@ -115,7 +115,19 @@ namespace MarketVerse.Controllers
 
         public ActionResult Approve(int id)
         {
-            return RedirectToAction("Index");
+            string res = Order.Approve(id);
+            if(res == "200")
+            {
+                TempData["pm"] = "You Approved this order!";
+                return RedirectToAction("Index");
+
+            }
+            else
+            {
+                TempData["pm"] = res;
+                return RedirectToAction("Index");
+
+            }
         }
     }
 }
