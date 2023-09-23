@@ -94,5 +94,21 @@ namespace MarketVerse.Models
             }
         }
 
+        public static string Approve(int id)
+        {
+            try
+            {
+                Order o = FindOrder(id);
+                o.OrderStatus = "Approved";
+                DatabaseModel.db.SaveChanges();
+                return "200";
+            }
+            catch(Exception ex)
+            {
+                return ex.Message;
+            }
+            
+        }
+
     }
 }
