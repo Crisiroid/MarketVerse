@@ -112,5 +112,10 @@ namespace MarketVerse.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        public ActionResult Approve(int id)
+        {
+            return RedirectToAction("Index");
+        }
     }
 }
