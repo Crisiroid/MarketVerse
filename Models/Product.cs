@@ -69,6 +69,11 @@ namespace MarketVerse.Models
                 PBV = SortByViews()
             };
         }
+
+        public static List<Product> Search(string Query)
+        {
+            return DatabaseModel.db.Products.Where(x => x.Name.Contains(Query)).ToList();
+        }
         //Editing methods
         public static void IncreaseProductView(int id)
         {
