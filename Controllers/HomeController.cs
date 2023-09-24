@@ -1,4 +1,5 @@
 ﻿using MarketVerse.Models;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace MarketVerse.Controllers
@@ -15,6 +16,10 @@ namespace MarketVerse.Controllers
             ViewBag.Message = "About Developer";
 
             return View();
+        }
+        public ActionResult Search(string Query)
+        {
+            return View(Product.Search(Query));
         }
        
     }
